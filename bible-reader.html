@@ -9,7 +9,7 @@
     <script type="module" src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /* New Deep Teal / Deep Orange Palette from style.css */
+        /* New Deep Teal / Deep Orange Palette */
         :root {
             --color-primary: #004d40; /* Deep Teal/Dark Green */
             --color-accent: #ff6f00; /* Deep Orange/Gold */
@@ -22,6 +22,7 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--color-bg);
             color: var(--color-text-dark);
+            margin: 0;
         }
 
         .primary-bg { background-color: var(--color-primary); }
@@ -30,7 +31,6 @@
         .accent-text { color: var(--color-accent); }
 
         .chapter-text {
-            /* Style for the rendered Bible text */
             line-height: 1.8;
             font-size: 1.1rem;
             text-align: left;
@@ -45,12 +45,23 @@
             line-height: 1.5;
         }
         .nav-btn:hover {
-            background-color: #00796b; /* Lighter Teal */
+            background-color: #00796b; /* Lighter Teal (Adjusted hover for Deep Teal) */
+        }
+
+        /* Standardized Form Input Focus */
+        .form-select, .form-input {
+            border: 1px solid #d1d5db;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-select:focus, .form-input:focus {
+            border-color: var(--color-accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2); /* Accent color with transparency */
         }
     </style>
 </head>
 <body>
-    <header class="primary-bg shadow-xl text-white">
+    <header class="primary-bg shadow-xl text-white sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i data-lucide="church" class="w-6 h-6"></i>
@@ -58,24 +69,27 @@
             </div>
             
             <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
-                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
-                <!-- Highlight the active page link -->
-                <a href="bible-reader.html" class="border-b-2 border-white pb-1 transition duration-150">Bible Reader</a>
-                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
-
+                <a href="index.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Home</a>
+                <a href="announcements.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Announcements</a>
+                <a href="events.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Events</a>
+                <a href="media.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Media</a>
+                <a href="contact.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Contact</a>
+                
                 <span class="text-gray-400">|</span>
 
                 <div class="relative group">
-                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
-                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    <button id="community-dropdown-btn" class="flex items-center border-b-2 border-white pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Study & Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
                     </button>
 
                     <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
-                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
-                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="bible-reader.html" class="block px-4 py-2 text-sm primary-bg text-white font-bold transition duration-100">Bible Reader</a>
+                        <a href="devotionals.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Study Hub/Devotionals</a>
+                        <a href="prayer.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Prayer Request</a>
+                        <div class="my-1 border-t border-gray-100"></div>
                         <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
                         <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
-                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                        <a href="resources.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
                     </div>
                 </div>
             </nav>
@@ -87,11 +101,36 @@
                 <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
                     Login
                 </a>
-                <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition" aria-label="Toggle menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
+        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004d40]/90">
+            <a href="index.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Home</a>
+            <a href="announcements.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Announcements</a>
+            <a href="events.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Events</a>
+            <a href="media.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Media</a>
+            <a href="contact.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Contact</a>
+            
+            <div class="pt-2 mt-2 border-t border-gray-600">
+                <p class="text-sm font-light text-gray-300 px-3 pt-1">Study & Community</p>
+                <a href="bible-reader.html" class="block py-2 px-3 primary-bg rounded-lg text-white font-bold transition duration-100">Bible Reader (Active)</a>
+                <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Study Hub/Devotionals</a>
+                <a href="prayer.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Prayer Request</a>
+                <a href="about.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">About Us</a>
+                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Ministries</a>
+                <a href="resources.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Beliefs/Resources</a>
+            </div>
+            <div class="pt-2 mt-2 border-t border-gray-600">
+                <a href="giving.html" class="block py-2 px-3 accent-bg rounded-lg text-white font-bold transition duration-100 flex items-center justify-center mb-2 hover:bg-orange-700">
+                     <i data-lucide="hand-coins" class="w-4 h-4 mr-2"></i> Give Now
+                </a>
+                <a href="login.html" class="block py-2 px-3 bg-white text-gray-800 rounded-lg font-bold transition duration-100 flex items-center justify-center hover:bg-gray-100">
+                     <i data-lucide="log-in" class="w-4 h-4 mr-2"></i> Login
+                </a>
+            </div>
+        </nav>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -103,34 +142,27 @@
             <p class="text-gray-600 text-md">Study the Word with quick navigation and multiple version support.</p>
         </div>
 
-        <!-- Navigation Controls (Books, Chapters, Versions) -->
         <div class="bg-white p-4 rounded-xl shadow-lg mb-8 border-t-4 border-t-accent-bg flex flex-wrap gap-4 justify-center items-center">
             
-            <!-- Book Selector -->
             <div class="flex flex-col w-full sm:w-auto">
                 <label for="book-select" class="text-sm font-semibold primary-text mb-1 text-left">Book</label>
-                <select id="book-select" class="p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-accent-text focus:border-accent-text transition w-full min-w-[150px]"></select>
+                <select id="book-select" class="p-2 border border-gray-300 rounded-lg shadow-sm form-select w-full min-w-[150px]"></select>
             </div>
 
-            <!-- Chapter Selector -->
             <div class="flex flex-col w-full sm:w-auto">
                 <label for="chapter-select" class="text-sm font-semibold primary-text mb-1 text-left">Chapter</label>
-                <select id="chapter-select" class="p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-accent-text focus:border-accent-text transition w-full min-w-[120px]"></select>
+                <select id="chapter-select" class="p-2 border border-gray-300 rounded-lg shadow-sm form-select w-full min-w-[120px]"></select>
             </div>
 
-            <!-- Version Selector -->
             <div class="flex flex-col w-full sm:w-auto">
                 <label for="version-select" class="text-sm font-semibold primary-text mb-1 text-left">Version</label>
-                <select id="version-select" class="p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-accent-text focus:border-accent-text transition w-full min-w-[120px]"></select>
+                <select id="version-select" class="p-2 border border-gray-300 rounded-lg shadow-sm form-select w-full min-w-[120px]"></select>
             </div>
         </div>
 
-        <!-- Bible Content Area -->
         <div class="flex flex-col lg:flex-row gap-6">
             
-            <!-- Chapter Navigation and Text -->
             <div class="lg:w-3/4 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                <!-- Top Chapter Navigation -->
                 <div class="primary-bg p-3 text-white flex justify-between items-center rounded-t-xl">
                     <button id="prev-chapter" class="nav-btn bg-white/10 p-2 rounded-lg transition duration-200 flex items-center disabled:opacity-50" disabled>
                         <i data-lucide="chevron-left" class="w-5 h-5"></i>
@@ -143,13 +175,11 @@
                     </button>
                 </div>
 
-                <!-- Text Display -->
                 <div id="bible-text-display" class="chapter-text min-h-[300px] p-6">
                     <p class="text-center text-gray-500 italic">Please select a book and chapter to begin reading.</p>
                 </div>
             </div>
 
-            <!-- Sidebar for Search/Notes (Placeholder) -->
             <div class="lg:w-1/4 bg-white p-6 rounded-xl shadow-lg border-l-4 border-l-primary-bg">
                 <h3 class="text-xl font-bold primary-text mb-4 flex items-center">
                     <i data-lucide="lightbulb" class="w-5 h-5 mr-2 accent-text"></i>
@@ -157,10 +187,10 @@
                 </h3>
                 <p class="text-sm text-gray-600 mb-4">You can use this sidebar for personal notes, dictionary lookups, or topic searches (future feature).</p>
                 
-                <input type="text" placeholder="Search Bible Text..." class="w-full p-2 border border-gray-300 rounded-lg mb-4 text-sm focus:ring-accent-text focus:border-accent-text">
+                <input type="text" placeholder="Search Bible Text..." class="w-full p-2 border border-gray-300 rounded-lg mb-4 text-sm form-input">
                 
                 <div class="text-center">
-                    <button class="w-full primary-bg text-white py-2 rounded-lg font-semibold hover:bg-teal-700 transition">
+                    <button class="w-full primary-bg text-white py-2 rounded-lg font-semibold hover:bg-[#00796b] transition">
                         <i data-lucide="search" class="w-4 h-4 inline mr-1"></i> Search
                     </button>
                 </div>
@@ -169,18 +199,23 @@
     </main>
 
     <footer class="bg-gray-800 text-white mt-12 p-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between">
             <div class="mb-4 md:mb-0">
                 <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
-                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+                <p class="text-sm text-gray-400">Integrated Study Tools & Community.</p>
+                <p class="text-xs text-gray-500 mt-2">P.O. Box: 474-10400, Nanyuki—Kenya</p>
+                <p class="text-xs text-gray-500">Email: nanyukicentralsda@gmail.com</p>
             </div>
-            <div class="text-sm text-gray-400 space-x-4">
+            <div class="text-sm text-gray-400 space-x-4 flex flex-wrap justify-end items-end pt-4 md:pt-0">
                 <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
                 <span class="text-gray-500">|</span>
                 <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
                 <span class="text-gray-500">|</span>
                 <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
             </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
+             &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
         </div>
     </footer>
     
@@ -223,6 +258,12 @@
         const currentReference = document.getElementById('current-reference');
         const prevChapterBtn = document.getElementById('prev-chapter');
         const nextChapterBtn = document.getElementById('next-chapter');
+        
+        // Mobile Menu Elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconElement = mobileMenuBtn ? mobileMenuBtn.querySelector('i') : null;
+
 
         // --- Mock Data Generator ---
         function generateMockVerse(verseNumber, book, chapter) {
@@ -366,8 +407,25 @@
 
             prevChapterBtn.addEventListener('click', () => changeChapter(-1));
             nextChapterBtn.addEventListener('click', () => changeChapter(1));
+            
+            // Mobile Menu Logic
+            if (mobileMenuBtn && mobileMenu && menuIconElement) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    mobileMenu.classList.toggle('hidden');
+                    
+                    // Toggle menu icon
+                    if (isHidden) {
+                        menuIconElement.setAttribute('data-lucide', 'x');
+                    } else {
+                        menuIconElement.setAttribute('data-lucide', 'menu');
+                    }
+                    if (typeof lucide !== 'undefined') lucide.createIcons(); // Re-render icons
+                });
+            }
 
-            // Initialize Lucide icons and dropdown menu (copied from other files for consistency)
+
+            // Initialize Lucide icons and dropdown menu
             if (typeof lucide !== 'undefined') lucide.createIcons();
             
             const dropdownBtn = document.getElementById('community-dropdown-btn');

@@ -9,16 +9,20 @@
     <script type="module" src="https://unpkg.com/lucide@latest"></script>
     
     <style>
+        /* CORRECTION 1: Standardized to Deep Teal / Deep Orange Palette */
         :root {
-            --color-primary: #004d99; /* Deep SDA Blue */
-            --color-accent: #e53935;  /* Maroon/Red Accent */
-            --color-bg: #f5f7f9;
+            --color-primary: #004d40; /* Deep Teal/Dark Green */
+            --color-accent: #ff6f00; /* Deep Orange/Gold */
+            --color-bg: #f5f5f5; /* Light Gray Background - Adjusted for consistency */
+            --color-text-dark: #263238; /* Dark Text */
+            --color-text-light: #ffffff;
         }
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-bg);
-            color: #1e293b;
+            color: var(--color-text-dark); /* Use variable for dark text */
+            margin: 0;
         }
 
         .primary-bg { background-color: var(--color-primary); }
@@ -27,7 +31,8 @@
         .accent-text { color: var(--color-accent); }
         
         .hero {
-            background: linear-gradient(rgba(0, 77, 153, 0.8), rgba(0, 77, 153, 0.9)), url('https://placehold.co/1200x600/004d99/ffffff/png?text=Faith+Hope+Love') center/cover no-repeat;
+            /* CORRECTION 6: Updated hero gradient and placeholder URL color to Deep Teal (#004d40) */
+            background: linear-gradient(rgba(0, 77, 64, 0.8), rgba(0, 77, 64, 0.9)), url('https://placehold.co/1200x600/004d40/ffffff/png?text=Faith+Hope+Love') center/cover no-repeat;
             color: white;
             padding: 8rem 0;
         }
@@ -45,50 +50,46 @@
     </style>
 </head>
 <body>
-    <header class="primary-bg shadow-xl text-white">
+    <header class="primary-bg shadow-xl text-white sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <!-- Logo -->
                 <i data-lucide="church" class="w-6 h-6"></i>
                 <span class="text-xl font-bold">Nanyuki Central SDA</span>
             </div>
             
-            <!-- Desktop Navigation -->
             <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
-                <!-- ACTIVE LINK -->
-                <a href="home.html" class="border-b-2 border-white pb-1 transition duration-150">Home</a>
-                
-                <a href="resources.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Resources Hub</a>
-                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
-                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
-                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+                <a href="index.html" class="border-b-2 border-white pb-1 transition duration-150">Home</a>
+                <a href="announcements.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Announcements</a>
+                <a href="events.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Events</a>
+                <a href="media.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Media</a>
+                <a href="contact.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Contact</a>
 
                 <span class="text-gray-400">|</span>
 
                 <div class="relative group">
                     <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
-                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                        Study & Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
                     </button>
 
-                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
-                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
-                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-56 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="bible-reader.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Bible Reader</a>
+                        <a href="devotionals.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Study Hub/Devotionals</a>
+                        <a href="prayer.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Prayer Request</a>
+                        <div class="my-1 border-t border-gray-100"></div>
                         <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
                         <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
-                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
-                        <a href="contact.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Contact Us</a>
+                        <a href="resources.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
                     </div>
                 </div>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-orange-700 transition duration-150 shadow-md flex items-center">
                     <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
                 </a>
                 <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
                     Login
                 </a>
-                <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition" aria-label="Toggle menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
@@ -96,70 +97,39 @@
         </div>
     </header>
 
-    <!-- Mobile Menu Container (Initially Hidden) -->
-    <div id="mobile-menu" class="lg:hidden hidden primary-bg/95 backdrop-blur-sm fixed inset-0 top-[68px] z-40 overflow-y-auto">
-        <div class="px-4 py-6 space-y-3 font-semibold text-lg text-white">
-            <!-- ACTIVE LINK IN MOBILE -->
-            <a href="home.html" class="flex items-center space-x-3 p-3 rounded-lg bg-white/10 transition">
-                <i data-lucide="home" class="w-6 h-6"></i>
-                <span>Home</span>
-            </a>
-            <a href="resources.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/10 transition">
-                <i data-lucide="library" class="w-6 h-6"></i>
-                <span>Resources Hub</span>
-            </a>
-
-            <a href="devotionals.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/10 transition">
-                <i data-lucide="compass" class="w-6 h-6"></i>
-                <span>Study Hub</span>
-            </a>
-            <a href="bible-reader.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/10 transition">
-                <i data-lucide="book-open-text" class="w-6 h-6"></i>
-                <span>Bible Reader</span>
-            </a>
-            <a href="prayer.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/10 transition">
-                <i data-lucide="hands-clapping" class="w-6 h-6"></i>
-                <span>Prayer</span>
-            </a>
-
-            <div class="pt-4 border-t border-gray-600/50">
-                <p class="text-sm text-gray-300 font-normal px-3 py-1">Community</p>
-                <a href="announcements.html" class="flex items-center space-x-3 p-3 pl-6 rounded-lg hover:bg-white/10 transition">
-                    <i data-lucide="megaphone" class="w-5 h-5"></i>
-                    <span>Announcements</span>
-                </a>
-                <a href="events.html" class="flex items-center space-x-3 p-3 pl-6 rounded-lg hover:bg-white/10 transition">
-                    <i data-lucide="calendar-check" class="w-5 h-5"></i>
-                    <span>Events</span>
-                </a>
-                <a href="about.html" class="flex items-center space-x-3 p-3 pl-6 rounded-lg hover:bg-white/10 transition">
-                    <i data-lucide="users" class="w-5 h-5"></i>
-                    <span>About Us</span>
-                </a>
-                <a href="ministries.html" class="flex items-center space-x-3 p-3 pl-6 rounded-lg hover:bg-white/10 transition">
-                    <i data-lucide="briefcase" class="w-5 h-5"></i>
-                    <span>Ministries</span>
-                </a>
-                <a href="media.html" class="flex items-center space-x-3 p-3 pl-6 rounded-lg hover:bg-white/10 transition">
-                    <i data-lucide="clapperboard" class="w-5 h-5"></i>
-                    <span>Media/Sermons</span>
-                </a>
-                <a href="contact.html" class="flex items-center space-x-3 p-3 pl-6 rounded-lg hover:bg-white/10 transition">
-                    <i data-lucide="mail" class="w-5 h-5"></i>
-                    <span>Contact Us</span>
-                </a>
-            </div>
+    <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004d40]/90">
+        <a href="index.html" class="block py-2 px-3 primary-bg rounded-lg text-white font-bold transition duration-100">Home (Active)</a>
+        <a href="announcements.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Announcements</a>
+        <a href="events.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Events</a>
+        <a href="media.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Media</a>
+        <a href="contact.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Contact</a>
+        
+        <div class="pt-2 mt-2 border-t border-gray-600">
+            <p class="text-sm font-light text-gray-300 px-3 pt-1">Study & Community</p>
+            <a href="bible-reader.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Bible Reader</a>
+            <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Study Hub/Devotionals</a>
+            <a href="prayer.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Prayer Request</a>
+            <a href="about.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">About Us</a>
+            <a href="ministries.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Ministries</a>
+            <a href="resources.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Beliefs/Resources</a>
         </div>
-    </div>
+        <div class="pt-2 mt-2 border-t border-gray-600">
+            <a href="giving.html" class="block py-2 px-3 accent-bg rounded-lg text-white font-bold transition duration-100 flex items-center justify-center mb-2 hover:bg-orange-700">
+                 <i data-lucide="hand-coins" class="w-4 h-4 mr-2"></i> Give Now
+            </a>
+            <a href="login.html" class="block py-2 px-3 bg-white text-gray-800 rounded-lg font-bold transition duration-100 flex items-center justify-center hover:bg-gray-100">
+                 <i data-lucide="log-in" class="w-4 h-4 mr-2"></i> Login
+            </a>
+        </div>
+    </nav>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero text-center">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">Welcome to Nanyuki Central SDA</h1>
                 <p class="text-xl mb-8 font-light max-w-2xl mx-auto">Growing Together in Worship, Fellowship, and Service. Experience the power of God's love.</p>
                 <div class="flex justify-center space-x-4">
-                    <a href="events.html" class="accent-bg text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105 flex items-center">
+                    <a href="events.html" class="accent-bg text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-orange-700 transition duration-300 transform hover:scale-105 flex items-center">
                         <i data-lucide="calendar-check" class="w-5 h-5 mr-2"></i> View Events
                     </a>
                     <a href="giving.html" class="bg-white text-gray-800 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105 flex items-center">
@@ -169,10 +139,9 @@
             </div>
         </section>
 
-        <!-- Quick Links/Cards Section -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-16 relative">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card border-t-4 border-t-red-500 text-center">
+                <div class="card border-t-4 border-t-accent-bg text-center">
                     <i data-lucide="book-open-text" class="w-10 h-10 accent-text mx-auto mb-3"></i>
                     <h2 class="text-xl font-bold primary-text mb-2">Sabbath School</h2>
                     <p class="text-gray-600 mb-4">Deepen your Bible knowledge with the weekly lesson studies.</p>
@@ -200,18 +169,23 @@
     </main>
 
     <footer class="bg-gray-800 text-white mt-12 p-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between">
             <div class="mb-4 md:mb-0">
                 <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
-                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+                <p class="text-sm text-gray-400">Integrated Study Tools & Community.</p>
+                <p class="text-xs text-gray-500 mt-2">P.O. Box: 474-10400, Nanyuki—Kenya</p>
+                <p class="text-xs text-gray-500">Email: nanyukicentralsda@gmail.com</p>
             </div>
-            <div class="text-sm text-gray-400 space-x-4">
+            <div class="text-sm text-gray-400 space-x-4 flex flex-wrap justify-end items-end pt-4 md:pt-0">
                 <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
                 <span class="text-gray-500">|</span>
                 <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
                 <span class="text-gray-500">|</span>
                 <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
             </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
+             &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
         </div>
     </footer>
     
@@ -247,17 +221,18 @@
             // Mobile Menu Toggle Logic
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconElement = mobileMenuBtn ? mobileMenuBtn.querySelector('i') : null;
 
             if (mobileMenuBtn && mobileMenu) {
                 mobileMenuBtn.addEventListener('click', () => {
                     const isHidden = mobileMenu.classList.contains('hidden');
                     mobileMenu.classList.toggle('hidden');
+                    
                     // Change the icon from 'menu' to 'x' when open
-                    const iconElement = mobileMenuBtn.querySelector('i');
                     if (isHidden) {
-                        iconElement.setAttribute('data-lucide', 'x');
+                        menuIconElement.setAttribute('data-lucide', 'x');
                     } else {
-                        iconElement.setAttribute('data-lucide', 'menu');
+                        menuIconElement.setAttribute('data-lucide', 'menu');
                     }
                     // Re-create icons to reflect the change
                     if (typeof lucide !== 'undefined') lucide.createIcons();

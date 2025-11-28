@@ -4,61 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nanyuki Central SDA Church - Welcome!</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* This is for the main body content sections */
+        .section-content {
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        /* Variables and base styles from Code 2 */
+        :root {
+            --color-primary: #004d99; /* Deep SDA Blue */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: #1e293b;
+            /* Important: Removes default margin */
+            margin: 0; 
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+
+        /* Retained basic styling for buttons and hero from Code 1, adapted to new variables */
+        .hero-section {
+            background-color: var(--color-primary); /* Use primary color for hero */
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #c62828; /* Darker red on hover */
+        }
+    </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
             
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="index.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 border-b-2 border-white">Home</a>
+                <a href="announcements.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Announcements</a>
+                <a href="events.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Events</a>
+                <a href="media.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Media</a>
+                <a href="contact.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Contact</a>
+
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="devotionals.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Devotionals</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="resources.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
-        <nav>
-            <a href="about.html">About Us</a>
-            <a href="announcements.html">Announcements</a>
-            <a href="events.html">Events</a>
-            <a href="devotionals.html">Devotionals</a>
-            <a href="media.html">Media</a>
-            <a href="contact.html">Contact</a>
-           <a href="login.html" class="btn-login">Login</a>
+
+        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004285]/90">
+            <a href="index.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">Home</a>
+            <a href="announcements.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Announcements</a>
+            <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
+            <a href="media.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Media</a>
+            <a href="contact.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Contact</a>
+            
+            <div class="pt-2 mt-2 border-t border-gray-600">
+                <p class="text-sm font-light text-gray-300 px-3 pt-1">Resources</p>
+                <a href="about.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">About Us</a>
+                <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Devotionals</a>
+                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Ministries</a>
+                <a href="resources.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Beliefs/Resources</a>
+            </div>
+        </nav>
     </header>
-    <section class="hero-section">
-        <h1>Welcome to Nanyuki Central SDA Church</h1>
-        <p>A Christ-centered community of faith, love, and service in Nanyuki.</p>
-        <a href="about.html" class="btn-primary">Get Started</a>
-    </section>
 
-    <section id="about" class="section-content">
-        <h2>About Us</h2>
-        <p>Welcome to Nanyuki Central SDA Church, a vibrant local community dedicated to sharing the everlasting gospel and fostering spiritual growth among the residents of Nanyuki and beyond.</p>
-        <a href="about.html" class="btn-primary" style="background-color: #00796b;">Read Our Mission & Vision &rarr;</a>
-    </section>
+    <main>
+        <section class="hero-section">
+            <h1>Welcome to Nanyuki Central SDA Church</h1>
+            <p>A Christ-centered community of faith, love, and service in Nanyuki.</p>
+            <a href="about.html" class="btn-primary">Get Started</a>
+        </section>
 
-    <section id="announcements" class="section-content">
-        <h2>Latest Announcements</h2>
-        <div class="announcement-item">No announcements yet. Check our <a href="announcements.html">Announcements Page</a> for updates!</div>
-    </section>
+        <section id="about" class="section-content">
+            <h2 class="text-3xl font-bold primary-text mb-4">About Us</h2>
+            <p class="text-lg">Welcome to Nanyuki Central SDA Church, a vibrant local community dedicated to sharing the everlasting gospel and fostering spiritual growth among the residents of Nanyuki and beyond.</p>
+            <a href="about.html" class="btn-primary" style="background-color: var(--color-primary); margin-top: 20px;">Read Our Mission & Vision &rarr;</a>
+        </section>
 
-    <section id="events" class="section-content">
-        <h2>Upcoming Events</h2>
-        <div class="event-item">
-            <h3>Sabbath School Program</h3>
-            <p>Every Saturday • 9:00 AM - 10:30 AM • Church Sanctuary</p>
+        <section id="announcements" class="section-content">
+            <h2 class="text-3xl font-bold primary-text mb-4">Latest Announcements</h2>
+            <div class="announcement-item text-lg">No announcements yet. Check our <a href="announcements.html" class="accent-text font-semibold hover:underline">Announcements Page</a> for updates!</div>
+        </section>
+
+        <section id="events" class="section-content">
+            <h2 class="text-3xl font-bold primary-text mb-4">Upcoming Events</h2>
+            <div class="event-item mb-4">
+                <h3 class="text-xl font-semibold accent-text">Sabbath School Program</h3>
+                <p class="text-gray-600">Every Saturday • 9:00 AM - 10:30 AM • Church Sanctuary</p>
+            </div>
+            <a href="events.html" class="btn-primary">View All Events &rarr;</a>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools & Community.</p>
+                <p class="text-xs text-gray-500 mt-2">P.O. Box: 474-10400, Nanyuki—Kenya</p>
+                <p class="text-xs text-gray-500">Email: nanyukicentralsda@gmail.com</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
         </div>
-        <a href="events.html" class="btn-primary">View All Events &rarr;</a>
-    </section>
-
-    <footer id="contact">
-        <div class="footer-info">
-            <h3>Contact Us</h3>
-            <p>P.O. Box: 474-10400, Nanyuki—Kenya</p>
-            <p>Email: nanyukicentralsda@gmail.com</p>
-            <p>Phone: +254791185217</p>
-        </div>
-        <div class="copyright">
-            &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
+        <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
+             &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
         </div>
     </footer>
+    
+    <script>
+        // Dropdown toggle logic
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // =========================================================
+            // CORE NAVIGATION LOGIC (Dropdown and Mobile Menu)
+            // =========================================================
 
-    <script src="script.js"></script>
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+            
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    // Toggles the 'hidden' class to show/hide the mobile menu
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                            dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+            // Initialize Lucide icons after the DOM is ready
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
 </body>
 </html>

@@ -3,40 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nanyuki Central SDA Church - Media</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Media & Sermons - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        .media-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; padding: 30px 0; }
-        .media-item { width: 100%; max-width: 560px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background-color: white; }
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        :root {
+            --color-primary: #004d99; /* Deep SDA Blue */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+        
+        /* Essential CSS for YouTube Embed Aspect Ratio */
+        .video-wrapper { 
+            position: relative; 
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0; 
+            overflow: hidden; 
+        }
+        .video-wrapper iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        }
     </style>
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
             
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="index.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Home</a>
+                <a href="announcements.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Announcements</a>
+                <a href="events.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Events</a>
+                <a href="media.html" class="border-b-2 border-white pb-1 transition duration-150">Media</a> <a href="contact.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Contact</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="devotionals.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Devotionals</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="resources.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
+                        <a href="bible-reader.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Bible Reader</a>
+                        <a href="prayer.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Prayer Request</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="announcements.html">Announcements</a>
-            <a href="events.html">Events</a>
-            <a href="devotionals.html">Devotionals</a>
-            <a href="media.html">Media</a>
-            <a href="contact.html">Contact</a>
-            <a href="login.html" class="btn-login">Login</a>
+
+        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004285]/90">
+            <a href="index.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Home</a>
+            <a href="announcements.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Announcements</a>
+            <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
+            <a href="media.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">Media</a> <a href="contact.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Contact</a>
+            
+            <div class="pt-2 mt-2 border-t border-gray-600">
+                <p class="text-sm font-light text-gray-300 px-3 pt-1">Community & Resources</p>
+                <a href="about.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">About Us</a>
+                <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Devotionals</a>
+                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Ministries</a>
+                <a href="resources.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Beliefs/Resources</a>
+                <a href="bible-reader.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Bible Reader</a>
+                <a href="prayer.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Prayer Request</a>
+            </div>
         </nav>
     </header>
 
-    <section class="section-content" style="margin-top: 50px;">
-        <h1>📽️ Latest Sermons and Media</h1>
-        <p>Catch up on past services, Bible studies, and special features from Nanyuki Central SDA Church.</p>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
+                <i data-lucide="tv" class="w-8 h-8 mr-3 accent-text"></i>
+                Latest Sermons and Media
+            </h1>
+            <p class="text-gray-600 text-lg">Catch up on past services, Bible studies, and special features from Nanyuki Central SDA Church.</p>
+        </div>
 
-        <div class="media-grid">
+        <div class="flex flex-wrap justify-center gap-8">
             
-            <div class="media-item">
-                <h2>Recent Sermon: Faith in Action</h2>
+            <div class="w-full max-w-xl p-4 bg-white rounded-xl shadow-lg border-t-4 border-t-red-500">
+                <h2 class="text-xl font-bold primary-text mb-3">Recent Sermon: Faith in Action</h2>
                 <div class="video-wrapper">
                     <iframe 
                         src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID?rel=0" 
@@ -44,11 +127,11 @@
                         allowfullscreen>
                     </iframe>
                 </div>
-                <p style="margin-top: 10px;">**To make this work:** Replace `YOUR_YOUTUBE_VIDEO_ID` with the actual ID from the video you wish to embed.</p>
+                <p class="text-sm text-gray-500 mt-4">**Note:** Replace `YOUR_YOUTUBE_VIDEO_ID` with the actual ID from the video you wish to embed.</p>
             </div>
             
-            <div class="media-item">
-                <h2>Weekly Bible Study</h2>
+            <div class="w-full max-w-xl p-4 bg-white rounded-xl shadow-lg border-t-4 border-t-blue-500">
+                <h2 class="text-xl font-bold primary-text mb-3">Weekly Bible Study</h2>
                 <div class="video-wrapper">
                     <iframe 
                         src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID_2?rel=0" 
@@ -56,21 +139,79 @@
                         allowfullscreen>
                     </iframe>
                 </div>
+                <p class="text-sm text-gray-500 mt-4">**Note:** Replace `YOUR_YOUTUBE_VIDEO_ID_2` with the actual ID from the video you wish to embed.</p>
+            </div>
+            </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools & Community.</p>
+                <p class="text-xs text-gray-500 mt-2">P.O. Box: 474-10400, Nanyuki—Kenya</p>
+                <p class="text-xs text-gray-500">Email: nanyukicentralsda@gmail.com</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
             </div>
         </div>
-    </section>
-
-    <footer id="contact">
-        <div class="footer-info">
-            <h3>Contact Us</h3>
-            <p>P.O. Box 474-10400, Nanyuki—Kenya</p>
-            <p>Email: nanyukicentralsda@gmail.com</p>
-            <p>Phone: +254791185217</p>
-        </div>
-        <div class="copyright">
-            &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
+        <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
+             &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
         </div>
     </footer>
-    <script src="script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // =========================================================
+            // CORE NAVIGATION LOGIC (Dropdown and Mobile Menu)
+            // =========================================================
+
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+            
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                            dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+            // Initialize Lucide icons after the DOM is ready
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
 </body>
 </html>

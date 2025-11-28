@@ -19,6 +19,7 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--color-bg);
             color: #1e293b;
+            margin: 0;
         }
 
         .primary-bg { background-color: var(--color-primary); }
@@ -44,23 +45,26 @@
             </div>
             
             <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
-                <a href="devotionals.html" class="border-b-2 border-white pb-1 transition duration-150">Study Hub</a>
-                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
-                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+                <a href="index.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Home</a>
+                <a href="announcements.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Announcements</a>
+                <a href="events.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Events</a>
+                <a href="media.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Media</a>
+                <a href="contact.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Contact</a>
 
                 <span class="text-gray-400">|</span>
 
                 <div class="relative group">
-                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
-                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    <button id="community-dropdown-btn" class="flex items-center border-b-2 border-white pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Study Hub <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
                     </button>
 
                     <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
-                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
-                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
-                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="devotionals.html" class="block px-4 py-2 text-sm primary-text font-bold bg-gray-50 transition duration-100">Devotionals</a>
+                        <a href="bible-reader.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Bible Reader</a>
+                        <a href="prayer.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Prayer Request</a>
                         <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
-                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="resources.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
                     </div>
                 </div>
             </nav>
@@ -72,11 +76,29 @@
                 <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
                     Login
                 </a>
-                <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
+
+        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004285]/90">
+            <a href="index.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Home</a>
+            <a href="announcements.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Announcements</a>
+            <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
+            <a href="media.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Media</a>
+            <a href="contact.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Contact</a>
+            
+            <div class="pt-2 mt-2 border-t border-gray-600">
+                <p class="text-sm font-light text-gray-300 px-3 pt-1">Study & Resources</p>
+                <a href="devotionals.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">Devotionals</a>
+                <a href="bible-reader.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Bible Reader</a>
+                <a href="prayer.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Prayer Request</a>
+                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Ministries</a>
+                <a href="about.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">About Us</a>
+                <a href="resources.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Beliefs/Resources</a>
+            </div>
+        </nav>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -97,8 +119,8 @@
                     <h2 class="text-3xl font-bold primary-text mb-4">The Quiet Assurance of Trust</h2>
                     <p class="text-lg italic text-gray-600 mb-4">"Trust in the Lord forever, for the Lord God is an everlasting rock." — Isaiah 26:4 (NIV)</p>
                     <div class="text-gray-700 leading-relaxed space-y-4">
-                        <p>In a world of shifting sands and unpredictable storms, finding a steady anchor is not just comforting—it's essential for survival. Isaiah reminds us where that anchor lies: in the unchanging nature of our everlasting God. Today, take a moment to pause your anxieties and consciously place your trust in Him. This isn't a passive trust; it's an active decision to rely on the Rock.</p>
-                        <p>The prophet's call to "trust in the Lord forever" is a deep invitation to rely on God's character, not just His capacity. He is the ultimate Rock, immutable and dependable. When we choose to trust Him, the burdens of uncertainty lift, replaced by a quiet, unshakable assurance. May your faith be settled on the solid Rock today.</p>
+                        <p>In a world of shifting sands and unpredictable storms, finding a steady anchor is not just comforting—it's essential for survival. Isaiah reminds us where that anchor lies: in the **unchanging nature of our everlasting God**. Today, take a moment to pause your anxieties and consciously place your trust in Him. This isn't a passive trust; it's an active decision to rely on the Rock.</p>
+                        <p>The prophet's call to "trust in the Lord forever" is a deep invitation to rely on God's character, not just His capacity. He is the ultimate **Rock, immutable and dependable**. When we choose to trust Him, the burdens of uncertainty lift, replaced by a quiet, unshakable assurance. May your faith be settled on the solid Rock today.</p>
                     </div>
                     <div class="mt-6 border-t pt-4 flex justify-between items-center">
                         <p class="text-sm font-medium primary-text">Contributor: Elder David Njoroge</p>
@@ -129,7 +151,7 @@
             
             <div class="lg:col-span-1 space-y-8">
                 
-                <div class="study-card border-t-blue-500">
+                <div class="study-card" style="border-top-color: #3b82f6;">
                     <h3 class="text-xl font-bold primary-text mb-3 flex items-center">
                         <i data-lucide="book-open-check" class="w-5 h-5 mr-2 accent-text"></i> Sabbath School Lesson
                     </h3>
@@ -139,7 +161,7 @@
                     </a>
                 </div>
                 
-                <div class="study-card border-t-red-500">
+                <div class="study-card" style="border-top-color: #ef4444;">
                     <h3 class="text-xl font-bold accent-text mb-3 flex items-center">
                         <i data-lucide="bible" class="w-5 h-5 mr-2 primary-text"></i> Integrated Bible Reader
                     </h3>
@@ -149,7 +171,7 @@
                     </a>
                 </div>
                 
-                <div class="study-card border-t-green-500">
+                <div class="study-card" style="border-top-color: #10b981;">
                     <h3 class="text-xl font-bold text-green-700 mb-3 flex items-center">
                         <i data-lucide="handshake" class="w-5 h-5 mr-2 primary-text"></i> Need Prayer?
                     </h3>
@@ -166,7 +188,9 @@
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
                 <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
-                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+                <p class="text-sm text-gray-400">Integrated Study Tools & Community.</p>
+                <p class="text-xs text-gray-500 mt-2">P.O. Box: 474-10400, Nanyuki—Kenya</p>
+                <p class="text-xs text-gray-500">Email: nanyukicentralsda@gmail.com</p>
             </div>
             <div class="text-sm text-gray-400 space-x-4">
                 <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
@@ -176,14 +200,33 @@
                 <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
             </div>
         </div>
+        <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
+             &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
+        </div>
     </footer>
     
     <script>
-        // Dropdown toggle logic
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // =========================================================
+            // CORE NAVIGATION LOGIC (Dropdown and Mobile Menu)
+            // =========================================================
+
             const dropdownBtn = document.getElementById('community-dropdown-btn');
             const dropdownMenu = document.getElementById('community-dropdown-menu');
             const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+            
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    // Toggles the 'hidden' class to show/hide the mobile menu
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
 
             if (dropdownBtn && dropdownMenu) {
                 dropdownBtn.addEventListener('click', () => {
@@ -201,13 +244,13 @@
                         dropdownBtn.setAttribute('aria-expanded', 'false');
                         dropdownMenu.classList.add('hidden');
                         if (dropdownIcon) {
-                             dropdownIcon.classList.remove('rotate-180');
+                            dropdownIcon.classList.remove('rotate-180');
                         }
                     }
                 });
             }
 
-            // Initialize Lucide icons
+            // Initialize Lucide icons after the DOM is ready
             if (typeof lucide !== 'undefined') lucide.createIcons();
         });
     </script>
