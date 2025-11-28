@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --color-primary: #004d99; /* Deep SDA Blue */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: #1e293b;
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+        
+        /* Mission/Vision section now uses the primary color for a bold, contrasting look */
+        .mission-vision {
+            background-color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
+                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center border-b-2 border-white pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm primary-text font-bold bg-gray-50 transition duration-100">About Us</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <!-- Mobile Menu Button - NOW HAS AN ID -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Links (Toggled by JS) - NEW STRUCTURE -->
+        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004285]/90">
+            <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Study Hub</a>
+            <a href="bible-reader.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Bible Reader</a>
+            <a href="prayer.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Prayer</a>
+            
+            <div class="pt-2 mt-2 border-t border-gray-600">
+                <p class="text-sm font-light text-gray-300 px-3 pt-1">Community</p>
+                <a href="announcements.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Announcements</a>
+                <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
+                <a href="about.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">About Us</a>
+                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Ministries</a>
+                <a href="media.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Media/Sermons</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
+                <i data-lucide="heart" class="w-8 h-8 mr-3 accent-text"></i>
+                Our Story and Beliefs
+            </h1>
+            <p class="text-gray-600 text-lg">Nanyuki Central SDA is a community rooted in faith, committed to serving God and our neighbors.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-2xl space-y-10">
+            <section class="border-b pb-8">
+                <h2 class="text-3xl font-bold accent-text mb-4 flex items-center"><i data-lucide="history" class="w-6 h-6 mr-2 primary-text"></i> Our History</h2>
+                <p class="text-gray-700 leading-relaxed">Nanyuki Central SDA Church traces its roots back to the early days of Adventist outreach in Kenya. Established by dedicated pioneers who carried the message of hope and health, our congregation has grown into a vibrant center of worship and community service. We stand today on the foundations of the Bible and the prophetic message, continuing the mission to share the eternal gospel in our generation.</p>
+            </section>
+
+            <section class="mission-vision text-white p-10 rounded-xl shadow-2xl">
+                <h2 class="text-3xl font-bold mb-6 text-center border-b pb-3">Our Guiding Principles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <!-- Removed accent-text class for better contrast on the blue background -->
+                        <h3 class="text-2xl font-extrabold mb-3 flex items-center"><i data-lucide="target" class="w-6 h-6 mr-2"></i> Mission</h3>
+                        <p class="font-light text-lg">To call people to become disciples of Jesus Christ, to proclaim the everlasting gospel, and to prepare the world for His soon return.</p>
+                    </div>
+                    <div>
+                        <!-- Removed accent-text class for better contrast on the blue background -->
+                        <h3 class="text-2xl font-extrabold mb-3 flex items-center"><i data-lucide="eye" class="w-6 h-6 mr-2"></i> Vision</h3>
+                        <p class="font-light text-lg">To be a Christ-centered community, reflecting His love and character through holistic ministry, touching lives in Nanyuki and beyond.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="text-center pt-8 border-t">
+                <h2 class="text-2xl font-bold primary-text mb-4">What We Believe</h2>
+                <p class="text-gray-600 mb-6">We adhere to the 28 Fundamental Beliefs of the Seventh-day Adventist Church. Learn more about the doctrines that guide our faith and practice.</p>
+                <a href="resources.html" class="accent-bg text-white font-bold py-3 px-8 rounded-full hover:bg-red-700 transition duration-200 shadow-lg inline-flex items-center">
+                    <i data-lucide="scroll" class="w-5 h-5 mr-2"></i> View 28 Fundamental Beliefs
+                </a>
+            </section>
+            
+            <!-- Link to the Ministries Page -->
+            <section class="text-center pt-8 mt-8">
+                <h2 class="text-3xl font-bold accent-text mb-4">IV. Our Areas of Service</h2>
+                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                    We serve the Nanyuki community through various specialized departments. Explore our dedicated ministries, including Youth, Women, Health, and Community Outreach, to find where you can connect and contribute.
+                </p>
+                <a href="ministries.html" class="primary-bg text-white font-bold py-3 px-8 rounded-full hover:bg-[#003c7a] transition duration-200 shadow-lg inline-flex items-center">
+                    <i data-lucide="handshake" class="w-5 h-5 mr-2"></i> Explore All Ministries
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Dropdown toggle logic
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // =========================================================
+            // 1. Core Navigation Logic (Dropdown and Mobile Menu)
+            // =========================================================
+
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+            
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    // Toggles the 'hidden' class to show/hide the mobile menu
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                            dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+
+            // =========================================================
+            // 2. DYNAMIC ANNOUNCEMENT LOADER (Merged in from your request)
+            //    Fetches content from announcements.txt and injects it.
+            // =========================================================
+
+            function loadAnnouncements() {
+                // Target area where announcements will be injected (from announcements.html)
+                const announcementsList = document.getElementById('announcements-list');
+                
+                // Safety check: only run this function if the target div exists
+                if (!announcementsList) {
+                    return;
+                }
+
+                // Display loading message
+                announcementsList.innerHTML = '<p class="text-center text-lg text-gray-500">Loading announcements...</p>';
+
+                fetch('announcements.txt')
+                    .then(response => {
+                        // Check for HTTP errors (e.g., 404 Not Found)
+                        if (!response.ok) {
+                            throw new Error(`HTTP Error: Failed to load announcements. Status: ${response.status} ${response.statusText}`);
+                        }
+                        return response.text();
+                    })
+                    .then(plainText => {
+                        
+                        // Clear the loading message
+                        announcementsList.innerHTML = ''; 
+
+                        // Split the text file content using the triple hyphen separator
+                        const announcements = plainText
+                            .split('---')
+                            .map(item => item.trim())
+                            .filter(item => item.length > 0);
+
+                        if (announcements.length === 0) {
+                            announcementsList.innerHTML = '<p class="text-center text-lg text-gray-600">There are no active announcements at this time. Please check back later.</p>';
+                            return;
+                        }
+
+                        // Generate HTML cards for each announcement
+                        announcements.forEach((announcementText) => {
+                            const card = document.createElement('div');
+                            // Added styling to the card for better aesthetics when used on announcements.html
+                            card.className = 'announcement-card bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm';
+                            
+                            // Convert newlines (\n) to <br> tags for correct display in HTML
+                            const formattedText = announcementText.replace(/\n/g, '<br>');
+                            
+                            const cardHTML = `<p class="text-gray-700 leading-relaxed">${formattedText}</p>`;
+                            
+                            card.innerHTML = cardHTML;
+                            announcementsList.appendChild(card);
+                        });
+                    })
+                    .catch(error => {
+                        // Display a detailed error message directly on the page for debugging
+                        console.error('Error loading announcements:', error);
+                        
+                        announcementsList.innerHTML = `
+                            <div style="background-color: #ffe0e0; padding: 20px; border: 1px solid #f00; border-radius: 8px; text-align: center; margin-top: 20px;">
+                                <h3 style="color: #c00; margin-top: 0; font-weight: bold;">⚠️ Content Loading Error</h3>
+                                <p>The system failed to load content from <strong>announcements.txt</strong>.</p>
+                                <p><strong>Common Cause:</strong> This typically happens due to browser security restrictions when viewing the page from a local file (using <code>file://</code>).</p>
+                                <p><strong>Actual Error:</strong> ${error.message}</p>
+                                <p><strong>Solution:</strong> Please use a local web server (like VS Code's "Live Server" extension) to view the site using an <code>http://</code> address.</p>
+                            </div>
+                        `;
+                    });
+            }
+            
+            // =========================================================
+            // 3. INITIALIZATION CALLS
+            // =========================================================
+            
+            // Start the loading process for announcements when the page loads
+            // This will only run logic if the element 'announcements-list' exists (i.e., on announcements.html)
+            loadAnnouncements();
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministries & Departments - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* New Deep Teal / Deep Orange Palette from style.css */
+        :root {
+            --color-primary: #004d40; /* Deep Teal/Dark Green */
+            --color-accent: #ff6f00; /* Deep Orange/Gold */
+            --color-bg: #f5f5f5; /* Light Gray Background */
+            --color-text-dark: #263238; /* Dark Text */
+            --color-text-light: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+        
+        .ministry-card {
+            border-top: 5px solid var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
+                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <!-- FIX: Highlighted the Community button because a sub-page is active -->
+                    <button id="community-dropdown-btn" class="flex items-center border-b-2 border-white pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <!-- Current page is highlighted here -->
+                        <a href="ministries.html" class="block px-4 py-2 text-sm primary-text font-bold bg-gray-50 border-t border-gray-200 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-orange-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
+                <i data-lucide="users" class="w-8 h-8 mr-3 accent-text"></i>
+                Our Ministries and Service Departments
+            </h1>
+            <p class="text-gray-600 text-lg">Explore the groups and departments that serve our local community in Nanyuki and drive the mission of Nanyuki Central SDA Church.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="ministry-card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <i data-lucide="book-open" class="w-8 h-8 accent-text mb-3"></i>
+                <h3 class="text-2xl font-bold primary-text mb-2">Sabbath School & Personal Ministries</h3>
+                <p class="text-gray-700 mt-2">Provides Bible study guides and materials for small groups, focused on deeper understanding and evangelism.</p>
+                <a href="#" class="font-bold accent-text hover:underline inline-flex items-center mt-3 text-sm">Join a Group <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+            </div>
+            
+            <div class="ministry-card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <i data-lucide="graduation-cap" class="w-8 h-8 accent-text mb-3"></i>
+                <h3 class="text-2xl font-bold primary-text mb-2">Adventist Youth Ministry (AY)</h3>
+                <p class="text-gray-700 mt-2">Developing spiritual leaders and mentoring young people through engaging programs, camps, and service projects.</p>
+                <a href="#" class="font-bold accent-text hover:underline inline-flex items-center mt-3 text-sm">See Activities <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+            </div>
+            
+            <div class="ministry-card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <i data-lucide="hand-heart" class="w-8 h-8 accent-text mb-3"></i>
+                <h3 class="text-2xl font-bold primary-text mb-2">Health Ministries</h3>
+                <p class="text-gray-700 mt-2">Promoting spiritual, mental, and physical health through educational programs, screenings, and community outreach.</p>
+                <a href="#" class="font-bold accent-text hover:underline inline-flex items-center mt-3 text-sm">View Resources <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+            </div>
+            
+            <div class="ministry-card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <i data-lucide="wallet" class="w-8 h-8 accent-text mb-3"></i>
+                <h3 class="text-2xl font-bold primary-text mb-2">Stewardship</h3>
+                <p class="text-gray-700 mt-2">Educating members on the biblical principles of giving, managing resources, and financial faithfulness.</p>
+                <a href="#" class="font-bold accent-text hover:underline inline-flex items-center mt-3 text-sm">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+            </div>
+
+            <div class="ministry-card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <i data-lucide="mail-open" class="w-8 h-8 accent-text mb-3"></i>
+                <h3 class="text-2xl font-bold primary-text mb-2">Publishing Ministries</h3>
+                <p class="text-gray-700 mt-2">Sharing literature and printed media to spread the gospel message within the Nanyuki area and beyond.</p>
+                <a href="#" class="font-bold accent-text hover:underline inline-flex items-center mt-3 text-sm">Volunteer <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+            </div>
+
+            <div class="ministry-card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                <i data-lucide="church" class="w-8 h-8 accent-text mb-3"></i>
+                <h3 class="text-2xl font-bold primary-text mb-2">Deaconry & Ushering</h3>
+                <p class="text-gray-700 mt-2">Ensuring a comfortable, safe, and welcoming atmosphere for all worshippers and visitors during services and events.</p>
+                <a href="#" class="font-bold accent-text hover:underline inline-flex items-center mt-3 text-sm">Serve <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Dropdown toggle logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        // Rotate the chevron icon to indicate open/close state
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                // Close the dropdown if the user clicks outside
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                             dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

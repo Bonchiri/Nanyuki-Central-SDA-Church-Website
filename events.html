@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Calendar - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --color-primary: #004d99; /* Deep SDA Blue */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: #1e293b;
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--color-accent);
+        }
+
+        .date-box {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            flex-shrink: 0;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
+                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center border-b-2 border-white pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm primary-text font-bold bg-gray-50 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
+                <i data-lucide="calendar" class="w-8 h-8 mr-3 accent-text"></i>
+                Upcoming Church Events
+            </h1>
+            <p class="text-gray-600 text-lg">Mark your calendars! Find all key church programs, outreach activities, and special gatherings here.</p>
+        </div>
+
+        <h2 class="text-2xl font-bold primary-text mb-6 border-b pb-2">December 2025</h2>
+
+        <div class="space-y-6">
+
+            <div class="event-item">
+                <div class="date-box mr-6">
+                    <span class="block text-3xl font-bold">7</span>
+                    <span class="block text-sm font-medium">Dec</span>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold primary-text">Health Emphasis Weekend</h3>
+                    <p class="text-gray-700">A full day dedicated to health principles, including free screenings and a keynote speaker from a local hospital.</p>
+                    <p class="text-sm text-gray-500 mt-1"><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> 9:00 AM - 5:00 PM | <i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Church Hall</p>
+                </div>
+                <a href="#" class="accent-bg text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-red-700 transition duration-200 ml-4 hidden md:block">Details</a>
+            </div>
+
+            <div class="event-item border-l-blue-500">
+                <div class="date-box mr-6 bg-blue-500">
+                    <span class="block text-3xl font-bold">8</span>
+                    <span class="block text-sm font-medium">Dec</span>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold text-blue-700">Community Outreach Planning Meeting</h3>
+                    <p class="text-gray-700">All volunteers for the January feeding program are required to attend. (Refer to announcement).</p>
+                    <p class="text-sm text-gray-500 mt-1"><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> 5:00 PM | <i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Church Boardroom</p>
+                </div>
+                <a href="#" class="primary-bg text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-blue-700 transition duration-200 ml-4 hidden md:block">Details</a>
+            </div>
+            
+            <div class="event-item">
+                <div class="date-box mr-6">
+                    <span class="block text-3xl font-bold">14</span>
+                    <span class="block text-sm font-medium">Dec</span>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold primary-text">Annual Church Business Meeting</h3>
+                    <p class="text-gray-700">Year-end budget voting and committee reports. Crucial meeting for all church members.</p>
+                    <p class="text-sm text-gray-500 mt-1"><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> 4:00 PM | <i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Main Sanctuary</p>
+                </div>
+                <a href="#" class="accent-bg text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-red-700 transition duration-200 ml-4 hidden md:block">Details</a>
+            </div>
+
+            <div class="event-item border-l-green-500">
+                <div class="date-box mr-6 bg-green-500">
+                    <span class="block text-3xl font-bold">20</span>
+                    <span class="block text-sm font-medium">Dec</span>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold text-green-700">Christmas Program Rehearsal</h3>
+                    <p class="text-gray-700">Final rehearsal for the Choir and Drama team ahead of the Christmas Sabbath program.</p>
+                    <p class="text-sm text-gray-500 mt-1"><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> 6:00 PM | <i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Main Sanctuary</p>
+                </div>
+                <a href="#" class="primary-bg text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-blue-700 transition duration-200 ml-4 hidden md:block">Details</a>
+            </div>
+            
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="#" class="primary-bg text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition duration-200 shadow-lg inline-flex items-center">
+                View Full Calendar <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Dropdown toggle logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                             dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

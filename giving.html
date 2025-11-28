@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* New Deep Teal / Deep Orange Palette */
+        :root {
+            --color-primary: #004d40; /* Deep Teal/Dark Green */
+            --color-accent: #ff6f00; /* Deep Orange/Gold */
+            --color-bg: #f5f5f5; /* Light Gray Background */
+            --color-text-dark: #263238; /* Dark Text */
+            --color-text-light: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+
+        /* Custom styling for the mobile menu drawer */
+        .mobile-menu-enter { transform: translateX(100%); }
+        .mobile-menu-enter-active {
+            transform: translateX(0);
+            transition: transform 0.3s ease-out;
+        }
+        .mobile-menu-exit { transform: translateX(0); }
+        .mobile-menu-exit-active {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in;
+        }
+
+        /* Styling for the instruction cards */
+        .giving-step {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-bg shadow-xl text-white sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
+                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <!-- Highlight the active page link -->
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold transition duration-150 shadow-md flex items-center border-2 border-white">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Drawer (Hidden by default) -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 bg-black/50 z-50 hidden lg:hidden mobile-menu-exit">
+        <div class="fixed top-0 right-0 h-full w-64 bg-white shadow-xl flex flex-col p-6 mobile-menu-enter" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+            <div class="flex justify-between items-center mb-8">
+                <h2 id="mobile-menu-title" class="text-xl font-bold primary-text">Navigation</h2>
+                <button id="close-mobile-menu" class="text-gray-700 hover:text-gray-900 p-1 rounded-full hover:bg-gray-100 transition">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Links -->
+            <nav class="flex flex-col space-y-4 font-semibold text-gray-800">
+                <a href="devotionals.html" class="flex items-center p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="book-open-text" class="w-5 h-5 mr-3 primary-text"></i> Study Hub
+                </a>
+                <a href="bible-reader.html" class="flex items-center p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="bible" class="w-5 h-5 mr-3 primary-text"></i> Bible Reader
+                </a>
+                <a href="prayer.html" class="flex items-center p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="hand-heart" class="w-5 h-5 mr-3 primary-text"></i> Prayer
+                </a>
+
+                <hr class="my-2 border-gray-200">
+                
+                <p class="text-xs font-bold uppercase text-gray-500 mt-4">Community</p>
+                <a href="announcements.html" class="flex items-center p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="megaphone" class="w-5 h-5 mr-3 primary-text"></i> Announcements
+                </a>
+                <a href="events.html" class="flex items-center p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="calendar-check" class="w-5 h-5 mr-3 primary-text"></i> Events
+                </a>
+                <a href="about.html" class="flex items-center p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="users" class="w-5 h-5 mr-3 primary-text"></i> About Us
+                </a>
+                <a href="ministries.html" class="flex items-center p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="sparkles" class="w-5 h-5 mr-3 primary-text"></i> Ministries
+                </a>
+                <a href="media.html" class="flex items-center p-2 rounded-lg hover:bg-gray-100 transition">
+                    <i data-lucide="monitor-play" class="w-5 h-5 mr-3 primary-text"></i> Media/Sermons
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
+                <i data-lucide="heart-handshake" class="w-8 h-8 mr-3 accent-text"></i>
+                Online Giving & Stewardship
+            </h1>
+            <p class="text-gray-600 text-lg">Thank you for your faithfulness. Your tithes and offerings support the mission work of Nanyuki Central SDA Church.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-t-accent-bg">
+            <h2 class="text-3xl font-extrabold primary-text mb-8 text-center border-b pb-4 border-gray-100">
+                Tithes and Offerings via M-Pesa Paybill
+            </h2>
+
+            <div class="max-w-lg mx-auto space-y-6">
+                <!-- Step 1: Paybill Number -->
+                <div class="giving-step bg-gray-50 border-l-4 border-l-accent-bg">
+                    <h3 class="flex items-center text-xl font-bold primary-text mb-2">
+                        <i data-lucide="plus-circle" class="w-6 h-6 mr-3 accent-text"></i>
+                        STEP 1: Enter Business Number (Paybill)
+                    </h3>
+                    <div class="bg-white p-3 rounded-lg border border-gray-200">
+                        <p class="text-xs text-gray-500 font-medium">BUSINESS NO:</p>
+                        <p class="text-4xl font-black accent-text mt-1 select-all">4022871</p>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-3">Go to your M-Pesa menu, select 'Lipa na M-Pesa', then 'Pay Bill'.</p>
+                </div>
+
+                <!-- Step 2: Account Number -->
+                <div class="giving-step bg-gray-50 border-l-4 border-l-accent-bg">
+                    <h3 class="flex items-center text-xl font-bold primary-text mb-2">
+                        <i data-lucide="tag" class="w-6 h-6 mr-3 accent-text"></i>
+                        STEP 2: Enter Account Name (Designation)
+                    </h3>
+                    <div class="bg-white p-3 rounded-lg border border-gray-200">
+                        <p class="text-xs text-gray-500 font-medium">ACCOUNT NO:</p>
+                        <p class="text-3xl font-extrabold primary-text mt-1">
+                            Designate Your Offering
+                        </p>
+                    </div>
+                    <p class="text-sm text-gray-700 mt-3 font-semibold">
+                        Please use a specific designation: <span class="accent-text font-bold">TITHE, OFFERING, DEVELOPMENT, P100,</span> etc.
+                    </p>
+                </div>
+                
+                <!-- Step 3: Confirmation -->
+                <div class="giving-step bg-green-50/70 border-l-4 border-l-green-600">
+                    <h3 class="flex items-center text-xl font-bold text-green-700 mb-2">
+                        <i data-lucide="check-square" class="w-6 h-6 mr-3 text-green-600"></i>
+                        STEP 3: Complete Transaction
+                    </h3>
+                    <p class="text-lg font-semibold text-gray-800">
+                        Enter the Amount and your M-Pesa PIN to complete your offering.
+                    </p>
+                    <p class="text-sm text-gray-600 mt-1">May God bless your cheerful giving!</p>
+                </div>
+            </div>
+            
+            <!-- NEW: Receipt Follow-up Instruction -->
+            <div class="mt-8 p-4 md:p-6 rounded-lg bg-yellow-50 border-l-4 border-l-accent-bg flex items-start space-x-3 shadow-md">
+                <i data-lucide="receipt-text" class="w-6 h-6 flex-shrink-0 accent-text mt-1"></i>
+                <div>
+                    <h4 class="text-lg font-bold primary-text">Receipt & Accountability</h4>
+                    <p class="text-sm text-gray-700 mt-1">
+                        For official receipts and accounting purposes, kindly follow up with the Church Treasury Department immediately after your transaction. Please refer to the <a href="contact.html" class="accent-text font-semibold hover:underline">Contact Us</a> page for their contact details.
+                    </p>
+                </div>
+            </div>
+            <!-- END NEW SECTION -->
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+
+            // --- Desktop Dropdown Logic ---
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+                    if (dropdownIcon) dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) dropdownIcon.classList.remove('rotate-180');
+                    }
+                });
+            }
+            
+            // --- Mobile Menu Drawer Logic ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+            const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+            const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+
+            const toggleMobileMenu = (show) => {
+                if (show) {
+                    mobileMenuDrawer.classList.remove('hidden', 'mobile-menu-exit-active');
+                    mobileMenuDrawer.classList.add('mobile-menu-enter-active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling on main content
+                } else {
+                    mobileMenuDrawer.classList.remove('mobile-menu-enter-active');
+                    mobileMenuDrawer.classList.add('mobile-menu-exit-active');
+                    
+                    // Hide after transition
+                    setTimeout(() => {
+                        mobileMenuDrawer.classList.add('hidden');
+                        mobileMenuDrawer.classList.remove('mobile-menu-exit-active');
+                        document.body.style.overflow = '';
+                    }, 300); // Matches CSS transition time
+                }
+                 // Re-initialize Lucide icons when showing the menu
+                if (show && typeof lucide !== 'undefined') lucide.createIcons();
+            };
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => toggleMobileMenu(true));
+            }
+            if (closeMobileMenuBtn) {
+                closeMobileMenuBtn.addEventListener('click', () => toggleMobileMenu(false));
+            }
+            if (mobileMenuDrawer) {
+                // Close when clicking outside the menu content
+                mobileMenuDrawer.addEventListener('click', (event) => {
+                    if (event.target === mobileMenuDrawer) {
+                        toggleMobileMenu(false);
+                    }
+                });
+            }
+
+            // Initialize Lucide icons on page load
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Reader - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* New Deep Teal / Deep Orange Palette from style.css */
+        :root {
+            --color-primary: #004d40; /* Deep Teal/Dark Green */
+            --color-accent: #ff6f00; /* Deep Orange/Gold */
+            --color-bg: #f5f5f5; /* Light Gray Background */
+            --color-text-dark: #263238; /* Dark Text */
+            --color-text-light: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+
+        .chapter-text {
+            /* Style for the rendered Bible text */
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: left;
+            padding: 20px;
+        }
+        .verse-number {
+            font-weight: bold;
+            color: var(--color-accent);
+            margin-right: 5px;
+            vertical-align: top;
+            font-size: 0.7em;
+            line-height: 1.5;
+        }
+        .nav-btn:hover {
+            background-color: #00796b; /* Lighter Teal */
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
+                <!-- Highlight the active page link -->
+                <a href="bible-reader.html" class="border-b-2 border-white pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-orange-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold primary-text flex items-center justify-center">
+                <i data-lucide="book-open-check" class="w-7 h-7 mr-3 accent-text"></i>
+                Interactive Bible Reader
+            </h1>
+            <p class="text-gray-600 text-md">Study the Word with quick navigation and multiple version support.</p>
+        </div>
+
+        <!-- Navigation Controls (Books, Chapters, Versions) -->
+        <div class="bg-white p-4 rounded-xl shadow-lg mb-8 border-t-4 border-t-accent-bg flex flex-wrap gap-4 justify-center items-center">
+            
+            <!-- Book Selector -->
+            <div class="flex flex-col w-full sm:w-auto">
+                <label for="book-select" class="text-sm font-semibold primary-text mb-1 text-left">Book</label>
+                <select id="book-select" class="p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-accent-text focus:border-accent-text transition w-full min-w-[150px]"></select>
+            </div>
+
+            <!-- Chapter Selector -->
+            <div class="flex flex-col w-full sm:w-auto">
+                <label for="chapter-select" class="text-sm font-semibold primary-text mb-1 text-left">Chapter</label>
+                <select id="chapter-select" class="p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-accent-text focus:border-accent-text transition w-full min-w-[120px]"></select>
+            </div>
+
+            <!-- Version Selector -->
+            <div class="flex flex-col w-full sm:w-auto">
+                <label for="version-select" class="text-sm font-semibold primary-text mb-1 text-left">Version</label>
+                <select id="version-select" class="p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-accent-text focus:border-accent-text transition w-full min-w-[120px]"></select>
+            </div>
+        </div>
+
+        <!-- Bible Content Area -->
+        <div class="flex flex-col lg:flex-row gap-6">
+            
+            <!-- Chapter Navigation and Text -->
+            <div class="lg:w-3/4 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                <!-- Top Chapter Navigation -->
+                <div class="primary-bg p-3 text-white flex justify-between items-center rounded-t-xl">
+                    <button id="prev-chapter" class="nav-btn bg-white/10 p-2 rounded-lg transition duration-200 flex items-center disabled:opacity-50" disabled>
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                        <span class="hidden sm:inline ml-1">Previous</span>
+                    </button>
+                    <h2 id="current-reference" class="text-xl font-bold">Genesis 1 (KJV)</h2>
+                    <button id="next-chapter" class="nav-btn bg-white/10 p-2 rounded-lg transition duration-200 flex items-center disabled:opacity-50">
+                        <span class="hidden sm:inline mr-1">Next</span>
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Text Display -->
+                <div id="bible-text-display" class="chapter-text min-h-[300px] p-6">
+                    <p class="text-center text-gray-500 italic">Please select a book and chapter to begin reading.</p>
+                </div>
+            </div>
+
+            <!-- Sidebar for Search/Notes (Placeholder) -->
+            <div class="lg:w-1/4 bg-white p-6 rounded-xl shadow-lg border-l-4 border-l-primary-bg">
+                <h3 class="text-xl font-bold primary-text mb-4 flex items-center">
+                    <i data-lucide="lightbulb" class="w-5 h-5 mr-2 accent-text"></i>
+                    Study Tools
+                </h3>
+                <p class="text-sm text-gray-600 mb-4">You can use this sidebar for personal notes, dictionary lookups, or topic searches (future feature).</p>
+                
+                <input type="text" placeholder="Search Bible Text..." class="w-full p-2 border border-gray-300 rounded-lg mb-4 text-sm focus:ring-accent-text focus:border-accent-text">
+                
+                <div class="text-center">
+                    <button class="w-full primary-bg text-white py-2 rounded-lg font-semibold hover:bg-teal-700 transition">
+                        <i data-lucide="search" class="w-4 h-4 inline mr-1"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Constants for Bible data
+        const BIBLE_BOOKS = {
+            "Genesis": 50, "Exodus": 40, "Leviticus": 27, "Numbers": 36, "Deuteronomy": 34,
+            "Joshua": 24, "Judges": 21, "Ruth": 4, "1 Samuel": 31, "2 Samuel": 24,
+            "1 Kings": 22, "2 Kings": 25, "1 Chronicles": 29, "2 Chronicles": 36, "Ezra": 10,
+            "Nehemiah": 13, "Esther": 10, "Job": 42, "Psalms": 150, "Proverbs": 31,
+            "Ecclesiastes": 12, "Song of Solomon": 8, "Isaiah": 66, "Jeremiah": 52,
+            "Lamentations": 5, "Ezekiel": 48, "Daniel": 12, "Hosea": 14, "Joel": 3,
+            "Amos": 9, "Obadiah": 1, "Jonah": 4, "Micah": 7, "Nahum": 3,
+            "Habakkuk": 3, "Zephaniah": 3, "Haggai": 2, "Zechariah": 14, "Malachi": 4,
+            "Matthew": 28, "Mark": 16, "Luke": 24, "John": 21, "Acts": 28,
+            "Romans": 16, "1 Corinthians": 16, "2 Corinthians": 13, "Galatians": 6,
+            "Ephesians": 6, "Philippians": 4, "Colossians": 4, "1 Thessalonians": 5,
+            "2 Thessalonians": 3, "1 Timothy": 6, "2 Timothy": 4, "Titus": 3,
+            "Philemon": 1, "Hebrews": 13, "James": 5, "1 Peter": 5, "2 Peter": 3,
+            "1 John": 5, "2 John": 1, "3 John": 1, "Jude": 1, "Revelation": 22
+        };
+
+        const BIBLE_VERSIONS = {
+            "KJV": "King James Version",
+            "NIV": "New International Version",
+            "ESV": "English Standard Version",
+            "NIV-SDA": "New International Version (SDA Notes)"
+        };
+        
+        // State variables
+        let currentBook = "Genesis";
+        let currentChapter = 1;
+        let currentVersion = "KJV";
+
+        // DOM Elements
+        const bookSelect = document.getElementById('book-select');
+        const chapterSelect = document.getElementById('chapter-select');
+        const versionSelect = document.getElementById('version-select');
+        const bibleTextDisplay = document.getElementById('bible-text-display');
+        const currentReference = document.getElementById('current-reference');
+        const prevChapterBtn = document.getElementById('prev-chapter');
+        const nextChapterBtn = document.getElementById('next-chapter');
+
+        // --- Mock Data Generator ---
+        function generateMockVerse(verseNumber, book, chapter) {
+            // A simple way to generate distinct mock text based on the reference
+            const seed = (book.length * 100) + chapter + verseNumber;
+            const words = ["In", "the", "beginning", "was", "the", "Word", "and", "the", "Word", "was", "with", "God", "and", "the", "Word", "was", "God", "And", "it", "came", "to", "pass", "on", "that", "day", "that", "the", "Lord", "showed", "favor", "unto", "His", "servant", "The", "righteous", "shall", "live", "by", "faith", "Behold", "I", "come", "quickly", "Blessed", "is", "he", "that", "keepeth", "the", "sayings", "of", "the", "prophecy", "of", "this", "book"];
+            
+            let text = [];
+            let length = 15 + (seed % 10);
+            for(let i = 0; i < length; i++) {
+                text.push(words[(seed + i) % words.length]);
+            }
+
+            return `<span class="verse-number">${verseNumber}</span> ${text.join(' ') + '.'}`;
+        }
+
+        function generateMockChapterText(book, chapter, version) {
+            let numVerses = 20 + (BIBLE_BOOKS[book] % 10); // Mock verses
+            if (book === "Psalms" && chapter === 119) numVerses = 176;
+            if (chapter === BIBLE_BOOKS[book] && chapter > 1) numVerses = 10; // Shorter last chapter
+
+            let content = '';
+            content += `<p class="font-light text-sm italic text-gray-500 mb-4">Displaying content for ${book} Chapter ${chapter} (${version}) - Mock Text</p>`;
+            
+            for (let v = 1; v <= numVerses; v++) {
+                content += `<p class="mb-4">${generateMockVerse(v, book, chapter)}</p>`;
+            }
+            return content;
+        }
+
+        // --- Core Rendering Functions ---
+
+        function updateChapterOptions() {
+            const maxChapters = BIBLE_BOOKS[currentBook];
+            chapterSelect.innerHTML = ''; // Clear previous options
+            for (let i = 1; i <= maxChapters; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `Chapter ${i}`;
+                chapterSelect.appendChild(option);
+            }
+            // Set the current chapter selected
+            chapterSelect.value = currentChapter;
+        }
+
+        function updateBibleText() {
+            bibleTextDisplay.innerHTML = generateMockChapterText(currentBook, currentChapter, currentVersion);
+            currentReference.textContent = `${currentBook} ${currentChapter} (${currentVersion})`;
+            updateChapterNavigation();
+        }
+
+        function updateChapterNavigation() {
+            const booksArray = Object.keys(BIBLE_BOOKS);
+            const currentBookIndex = booksArray.indexOf(currentBook);
+            const maxChapters = BIBLE_BOOKS[currentBook];
+
+            // Previous Chapter Logic
+            prevChapterBtn.disabled = (currentBookIndex === 0 && currentChapter === 1);
+            
+            // Next Chapter Logic
+            const isLastChapter = currentChapter >= maxChapters;
+            const isLastBook = currentBookIndex >= booksArray.length - 1;
+            nextChapterBtn.disabled = isLastBook && isLastChapter;
+        }
+
+        // --- Navigation Handlers ---
+
+        function changeChapter(delta) {
+            let nextChapter = currentChapter + delta;
+            let currentBookChapters = BIBLE_BOOKS[currentBook];
+            const booksArray = Object.keys(BIBLE_BOOKS);
+            const currentBookIndex = booksArray.indexOf(currentBook);
+
+            if (nextChapter > 0 && nextChapter <= currentBookChapters) {
+                // Stay in current book
+                currentChapter = nextChapter;
+            } else if (nextChapter > currentBookChapters) {
+                // Move to next book
+                const nextBook = booksArray[currentBookIndex + 1];
+                
+                if (nextBook) {
+                    currentBook = nextBook;
+                    currentChapter = 1;
+                    updateChapterOptions();
+                }
+            } else if (nextChapter < 1) {
+                // Move to previous book
+                const prevBook = booksArray[currentBookIndex - 1];
+
+                if (prevBook) {
+                    currentBook = prevBook;
+                    currentChapter = BIBLE_BOOKS[prevBook]; // Go to the last chapter of the previous book
+                    updateChapterOptions();
+                }
+            }
+            updateBibleText();
+        }
+        
+        // --- Initialization ---
+
+        function initializeBibleReader() {
+            // 1. Populate Book Selector
+            for (const book in BIBLE_BOOKS) {
+                const option = document.createElement('option');
+                option.value = book;
+                option.textContent = book;
+                bookSelect.appendChild(option);
+            }
+            bookSelect.value = currentBook; // Default to Genesis
+
+            // 2. Populate Version Selector
+            for (const key in BIBLE_VERSIONS) {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = BIBLE_VERSIONS[key] + ` (${key})`;
+                versionSelect.appendChild(option);
+            }
+            versionSelect.value = currentVersion; // Default to KJV
+
+            // 3. Populate Chapters and Initial Text
+            updateChapterOptions();
+            updateBibleText();
+
+            // 4. Event Listeners
+            bookSelect.addEventListener('change', (e) => {
+                currentBook = e.target.value;
+                currentChapter = 1; // Always reset to chapter 1 when changing books
+                updateChapterOptions();
+                updateBibleText();
+            });
+
+            chapterSelect.addEventListener('change', (e) => {
+                currentChapter = parseInt(e.target.value, 10);
+                updateBibleText();
+            });
+
+            versionSelect.addEventListener('change', (e) => {
+                currentVersion = e.target.value;
+                updateBibleText();
+            });
+
+            prevChapterBtn.addEventListener('click', () => changeChapter(-1));
+            nextChapterBtn.addEventListener('click', () => changeChapter(1));
+
+            // Initialize Lucide icons and dropdown menu (copied from other files for consistency)
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+                    if (dropdownIcon) dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) dropdownIcon.classList.remove('rotate-180');
+                    }
+                });
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', initializeBibleReader);
+    </script>
+</body>
+</html>

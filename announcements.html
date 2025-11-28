@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --color-primary: #004d99; /* Deep SDA Blue */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: #1e293b;
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+
+        .announcement-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid var(--color-primary);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .announcement-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
+                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center border-b-2 border-white pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm primary-text font-bold bg-gray-50 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
+                <i data-lucide="megaphone" class="w-8 h-8 mr-3 accent-text"></i>
+                Church Announcements
+            </h1>
+            <p class="text-gray-600 text-lg">Stay updated with the latest news, meetings, and important happenings at Nanyuki Central SDA.</p>
+        </div>
+        
+        <div class="space-y-6">
+
+            <div class="announcement-card border-l-red-500">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold accent-text mb-1">📢 URGENT: Community Outreach Planning Meeting</h2>
+                    <span class="text-xs font-semibold text-white px-3 py-1 rounded-full bg-red-500">URGENT</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-3">Posted: November 28, 2025</p>
+                <p class="text-gray-700">All **volunteers** should meet in the Church Boardroom this **Sunday, December 8, 2025, at 5:00 PM**. Please be punctual for this critical planning session.</p>
+            </div>
+
+            <div class="announcement-card border-l-blue-500">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold primary-text mb-1">📅 Annual Church Business Meeting</h2>
+                </div>
+                <p class="text-gray-500 text-sm mb-3">Posted: November 28, 2025</p>
+                <p class="text-gray-700">This meeting is scheduled for **Sabbath, December 14, 2025, at 4:00 PM** in the Main Sanctuary. **Year-end reports** and **budget voting** will take place. All church members are encouraged to attend.</p>
+            </div>
+
+            <div class="announcement-card border-l-green-500">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold text-green-700 mb-1">📚 Youth Bible Study Resumes</h2>
+                </div>
+                <p class="text-gray-500 text-sm mb-3">Posted: November 28, 2025</p>
+                <p class="text-gray-700">Resuming this **Wednesday at 7:00 PM** in the Youth Hall. We begin our study in the powerful **Book of Daniel**. All young people are invited!</p>
+            </div>
+
+            <div class="announcement-card border-l-gray-400">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">⛪ Upcoming Sabbath Programs</h2>
+                </div>
+                <p class="text-gray-500 text-sm mb-3">Posted: November 20, 2025</p>
+                <p class="text-gray-700">Join us for Sabbath School at 9:15 AM and Divine Service at 11:00 AM. Our guest speaker this week will be Elder Kiprono on the topic of Faith.</p>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Dropdown toggle logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                             dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

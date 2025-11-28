@@ -1,0 +1,216 @@
+/* ----------------------------------------------------------------
+   1. COLOR PALETTE & RESET
+   ---------------------------------------------------------------- */
+:root {
+    /* Primary SDA Colors: Deep Teal (often dark green/blue) */
+    --color-primary: #004d40; /* Deep Teal/Dark Green */
+    
+    /* Accent Color: Symbolizing light/flame/energy (often gold/orange) */
+    --color-accent: #ff6f00; /* Deep Orange/Gold */
+    
+    /* Backgrounds */
+    --color-light-bg: #f5f5f5; /* Light Gray Background */
+    --color-white: #ffffff;
+    
+    /* Text */
+    --color-text-dark: #263238; /* Dark Text */
+    --color-text-light: #eceff1; /* Very Light Text */
+}
+
+/* Global Reset and Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: var(--color-light-bg);
+}
+
+h1, h2, h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-accent);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+/* ----------------------------------------------------------------
+   2. NAVIGATION BAR
+   ---------------------------------------------------------------- */
+.navbar {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.4em;
+    font-weight: bold;
+    /* Styles for the logo placeholder: Make the text readable */
+    color: var(--color-white); 
+}
+
+.navbar nav a {
+    color: var(--color-text-light);
+    margin-left: 20px;
+    font-weight: 500;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar nav a:hover {
+    color: var(--color-accent); /* Accent color on hover */
+    border-bottom: 2px solid var(--color-accent);
+}
+
+.btn-login {
+    background-color: var(--color-accent);
+    color: var(--color-white) !important;
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: none;
+    transition: background-color 0.3s;
+    border-bottom: none !important; /* Override border for button */
+}
+
+.btn-login:hover {
+    background-color: #e65100; /* Slightly darker accent */
+}
+
+/* ----------------------------------------------------------------
+   3. GLOBAL SECTIONS AND BUTTONS
+   ---------------------------------------------------------------- */
+.section-content {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-white) !important;
+    padding: 10px 25px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    background-color: #00796b; /* Slightly lighter primary color */
+}
+
+/* ----------------------------------------------------------------
+   4. HOME PAGE (HERO)
+   ---------------------------------------------------------------- */
+.hero-section {
+    background: linear-gradient(rgba(0, 77, 64, 0.7), rgba(0, 77, 64, 0.7)), url('hero-bg.jpg'); /* Placeholder image */
+    background-size: cover;
+    background-position: center;
+    color: var(--color-white);
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--color-white);
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+}
+
+/* ----------------------------------------------------------------
+   5. FOOTER
+   ---------------------------------------------------------------- */
+footer {
+    background-color: var(--color-text-dark); /* Dark Gray/Black */
+    color: var(--color-text-light);
+    padding: 40px 5%;
+    text-align: center;
+}
+
+.footer-info {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+}
+
+.footer-info h3 {
+    color: var(--color-accent);
+    margin-bottom: 15px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+.copyright {
+    font-size: 0.8em;
+    color: #999;
+}
+
+/* ----------------------------------------------------------------
+   6. RESPONSIVENESS (Mobile First)
+   ---------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar nav {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar nav a {
+        margin: 5px 0;
+        padding: 5px 0;
+        border-bottom: none !important;
+    }
+
+    .btn-login {
+        margin-top: 10px;
+        align-self: flex-start;
+        width: auto;
+    }
+    
+    .hero-section h1 {
+        font-size: 2em;
+    }
+}

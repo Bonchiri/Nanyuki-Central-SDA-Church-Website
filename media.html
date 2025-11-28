@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanyuki Central SDA Church - Media</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .media-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; padding: 30px 0; }
+        .media-item { width: 100%; max-width: 560px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background-color: white; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="events.html">Events</a>
+            <a href="devotionals.html">Devotionals</a>
+            <a href="media.html">Media</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html" class="btn-login">Login</a>
+        </nav>
+    </header>
+
+    <section class="section-content" style="margin-top: 50px;">
+        <h1>📽️ Latest Sermons and Media</h1>
+        <p>Catch up on past services, Bible studies, and special features from Nanyuki Central SDA Church.</p>
+
+        <div class="media-grid">
+            
+            <div class="media-item">
+                <h2>Recent Sermon: Faith in Action</h2>
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID?rel=0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p style="margin-top: 10px;">**To make this work:** Replace `YOUR_YOUTUBE_VIDEO_ID` with the actual ID from the video you wish to embed.</p>
+            </div>
+            
+            <div class="media-item">
+                <h2>Weekly Bible Study</h2>
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID_2?rel=0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-info">
+            <h3>Contact Us</h3>
+            <p>P.O. Box 474-10400, Nanyuki—Kenya</p>
+            <p>Email: nanyukicentralsda@gmail.com</p>
+            <p>Phone: +254791185217</p>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

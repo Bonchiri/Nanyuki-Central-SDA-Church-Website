@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Nanyuki Central SDA Church</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --color-primary: #004d99; /* Deep SDA Blue */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: #1e293b;
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+
+        /* Custom Form Styling */
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .form-message {
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-message.success { background-color: #e8f5e9; color: #2e7d32; }
+        .form-message.error { background-color: #ffebee; color: #c62828; }
+        .prayer-callout {
+            background-color: #fce4e4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px dashed var(--color-accent);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
+                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <div class="bg-white p-8 rounded-xl shadow-2xl flex flex-col lg:flex-row gap-10">
+            
+            <div class="lg:w-1/3 pb-6 lg:border-r lg:pr-8 border-gray-200">
+                <h1 class="text-3xl font-extrabold primary-text mb-4">Get In Touch</h1>
+                <p class="text-gray-700 mb-8">We are here to serve you. For general inquiries, administrative questions, or scheduling, please use the form or direct details below.</p>
+                
+                <h2 class="text-xl font-bold accent-text mb-3 flex items-center">
+                    <i data-lucide="map-pin" class="w-5 h-5 mr-2"></i> Direct Details
+                </h2>
+                <div class="space-y-3 text-gray-700">
+                    <p><strong>Location:</strong> Nanyuki Town, along the Nanyuki-Nyeri Highway</p>
+                    <p><strong>P.O. Box:</strong> 474-10400, Nanyuki—Kenya</p>
+                    <p><strong>Email:</strong> <a href="mailto:nanyukicentralsda@gmail.com" class="text-blue-600 hover:underline">nanyukicentralsda@gmail.com</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+254791185217" class="text-blue-600 hover:underline">+254 791 185 217</a></p>
+                </div>
+
+                <div class="prayer-callout mt-10">
+                    <h3 class="text-2xl font-bold accent-text flex items-center justify-center mb-2">
+                        <i data-lucide="heart-handshake" class="w-6 h-6 mr-2"></i> Need Prayer?
+                    </h3>
+                    <p class="text-gray-700 mb-4">If your message is a confidential prayer request, use our dedicated form.</p>
+                    <a href="prayer.html" class="accent-bg text-white px-5 py-2 rounded-full font-bold hover:bg-red-700 transition duration-200 inline-flex items-center">
+                        Submit Prayer Request Here <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:w-2/3">
+                <h2 class="text-3xl font-bold primary-text mb-6">General Inquiry Form</h2>
+                <p class="text-gray-600 mb-6">Use this form for all non-prayer related communication, including scheduling, administration, and volunteer questions.</p>
+                
+                <div class="form-message" id="form-status"></div>
+
+                <form id="contactForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST" class="space-y-4">
+                    
+                    <div>
+                        <label for="name" class="block text-gray-700 font-semibold">Your Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="E.g., John Doe" required class="form-input">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-gray-700 font-semibold">Your Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="E.g., example@email.com" required class="form-input">
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-gray-700 font-semibold">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="E.g., Volunteer Opportunity, Admin Question" required class="form-input">
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-gray-700 font-semibold">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Type your inquiry here..." required class="form-input min-h-[150px] resize-y"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full primary-bg text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 transition duration-200 flex items-center justify-center shadow-lg">
+                        <i data-lucide="send" class="w-5 h-5 mr-2"></i> Send General Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Dropdown toggle logic (Identical to ministries.html)
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                             dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+            // Form submission logic (Copied from previous response)
+            const form = document.getElementById('contactForm');
+            const statusMessage = document.getElementById('form-status');
+
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                const data = new FormData(form);
+                
+                statusMessage.style.display = 'none';
+                statusMessage.className = 'form-message';
+                statusMessage.innerHTML = 'Sending...';
+                statusMessage.style.display = 'block';
+
+                // NOTE: The fetch call requires a valid Formspree endpoint in the form's action attribute.
+                fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        statusMessage.className = 'form-message success';
+                        statusMessage.innerHTML = '✅ Thank you! Your message has been sent successfully.';
+                        form.reset(); 
+                    } else {
+                        response.json().then(data => {
+                            let errorMessage = '❌ Oops! There was a problem submitting your form.';
+                            if (Object.hasOwn(data, 'errors')) {
+                                errorMessage += ` Details: ${data["errors"].map(error => error["message"]).join(", ")}`;
+                            }
+                            statusMessage.innerHTML = errorMessage;
+                            statusMessage.className = 'form-message error';
+                        })
+                    }
+                }).catch(error => {
+                    console.error('Submission Error:', error);
+                    statusMessage.className = 'form-message error';
+                    statusMessage.innerHTML = '❌ An unexpected error occurred. Please check your network connection.';
+                });
+            });
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

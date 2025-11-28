@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanyuki Central SDA Church - Submit a Prayer Request</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific styles for the Prayer Request container and inputs */
+        .prayer-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: var(--color-white);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            text-align: left;
+            border-top: 5px solid var(--color-accent); /* Gold/Orange accent border */
+        }
+        .prayer-container h1 {
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .prayer-container p.subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .prayer-form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: var(--color-text-dark);
+        }
+        .prayer-form input[type="text"], 
+        .prayer-form input[type="email"],
+        .prayer-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .prayer-form textarea {
+            resize: vertical;
+            min-height: 180px;
+        }
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none; 
+            text-align: center;
+        }
+        .form-message.success {
+            background-color: #e8f5e9; 
+            color: #2e7d32; 
+        }
+        .form-message.error {
+            background-color: #ffebee; 
+            color: #c62828; 
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="events.html">Events</a>
+            <a href="devotionals.html">Devotionals</a>
+            <a href="media.html">Media</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html" class="btn-login">Login</a>
+        </nav>
+    </header>
+
+    <section class="section-content">
+        <div class="prayer-container">
+            <h1>Casting Your Burdens on Him</h1>
+            <p class="subtitle">"Call upon Me in the day of trouble; I will deliver you, and you shall glorify Me." (Psalm 50:15)</p>
+
+            <div class="form-message" id="form-status"></div>
+
+            <!-- ACTION ATTRIBUTE: Replace the placeholder with your unique Formspree URL -->
+            <form id="prayerForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST" class="prayer-form">
+                
+                <label for="name">Your Name (Optional)</label>
+                <input type="text" id="name" name="name" placeholder="Leave blank if you wish to remain anonymous">
+
+                <label for="email">Your Email Address (Optional)</label>
+                <input type="email" id="email" name="email" placeholder="So our pastor/prayer team can follow up">
+
+                <label for="subject">Prayer Focus / Topic</label>
+                <input type="text" id="subject" name="subject" placeholder="E.g., Healing, Job Loss, Guidance" required>
+
+                <label for="message">Your Prayer Request (Details)</label>
+                <textarea id="message" name="message" placeholder="Share your need here. All requests are handled with absolute confidentiality." required></textarea>
+
+                <button type="submit" class="btn-primary" style="background-color: var(--color-accent); border: none;">Submit Prayer Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer (Final Nanyuki Contact Details) -->
+    <footer id="contact-info-footer">
+        <div class="footer-info">
+            <h3>Contact Us</h3>
+            <p>P.O. Box 474-10400, Nanyuki—Kenya</p>
+            <p>Email: nanyukicentralsda@gmail.com</p>
+            <p>Phone: +254791185217</p>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
+        </div>
+    </footer>
+    
+    <!-- Inline script for form submission handling -->
+    <script>
+        // NOTE: This logic is dedicated to handling the prayer form submission.
+        const form = document.getElementById('prayerForm');
+        const statusMessage = document.getElementById('form-status');
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            
+            // Clear previous messages and show loading state
+            statusMessage.style.display = 'none';
+            statusMessage.className = 'form-message';
+            statusMessage.innerHTML = 'Sending prayer request...';
+            statusMessage.style.display = 'block';
+
+            // Send the request
+            fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    statusMessage.className = 'form-message success';
+                    statusMessage.innerHTML = '🙏 **Request Sent!** The Nanyuki Central Prayer Team has received your request. May God bless you.';
+                    form.reset(); // Clear the form inputs
+                } else {
+                    // Handle failure cases
+                    response.json().then(data => {
+                        let errorMessage = '❌ Oops! There was a problem submitting your request.';
+                        if (Object.hasOwn(data, 'errors')) {
+                            errorMessage += ` Details: ${data["errors"].map(error => error["message"]).join(", ")}`;
+                        }
+                        statusMessage.innerHTML = errorMessage;
+                        statusMessage.className = 'form-message error';
+                    })
+                }
+            }).catch(error => {
+                console.error('Submission Error:', error);
+                statusMessage.className = 'form-message error';
+                statusMessage.innerHTML = '❌ An unexpected error occurred. Please check your internet connection.';
+            });
+        });
+    </script>
+</body>
+</html>

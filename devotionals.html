@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Devotionals - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --color-primary: #004d99; /* Deep SDA Blue */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: #1e293b;
+        }
+
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
+        
+        .study-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-bg shadow-xl text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="border-b-2 border-white pb-1 transition duration-150">Study Hub</a>
+                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
+
+                <span class="text-gray-400">|</span>
+
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
+
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
+                <i data-lucide="book-open-text" class="w-8 h-8 mr-3 accent-text"></i>
+                Daily Spiritual Food
+            </h1>
+            <p class="text-gray-600 text-lg">Nurture your relationship with Christ through devotionals, Bible study resources, and lesson guides.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-8">
+                
+                <div class="study-card">
+                    <span class="text-sm font-semibold accent-text block mb-1">Today's Reading | November 28, 2025</span>
+                    <h2 class="text-3xl font-bold primary-text mb-4">The Quiet Assurance of Trust</h2>
+                    <p class="text-lg italic text-gray-600 mb-4">"Trust in the Lord forever, for the Lord God is an everlasting rock." — Isaiah 26:4 (NIV)</p>
+                    <div class="text-gray-700 leading-relaxed space-y-4">
+                        <p>In a world of shifting sands and unpredictable storms, finding a steady anchor is not just comforting—it's essential for survival. Isaiah reminds us where that anchor lies: in the unchanging nature of our everlasting God. Today, take a moment to pause your anxieties and consciously place your trust in Him. This isn't a passive trust; it's an active decision to rely on the Rock.</p>
+                        <p>The prophet's call to "trust in the Lord forever" is a deep invitation to rely on God's character, not just His capacity. He is the ultimate Rock, immutable and dependable. When we choose to trust Him, the burdens of uncertainty lift, replaced by a quiet, unshakable assurance. May your faith be settled on the solid Rock today.</p>
+                    </div>
+                    <div class="mt-6 border-t pt-4 flex justify-between items-center">
+                        <p class="text-sm font-medium primary-text">Contributor: Elder David Njoroge</p>
+                        <button class="accent-bg text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-red-700 transition duration-200 inline-flex items-center">
+                            Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold primary-text mb-4 border-b pb-2">Recent Reflections</h3>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between items-center border-b pb-2">
+                            <a href="#" class="hover:text-blue-700 font-medium">November 27: The Power of Forgiveness</a>
+                            <span class="text-sm text-gray-500">Read &rarr;</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b pb-2">
+                            <a href="#" class="hover:text-blue-700 font-medium">November 26: Practical Godliness in the Workplace</a>
+                            <span class="text-sm text-gray-500">Read &rarr;</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <a href="#" class="hover:text-blue-700 font-medium">November 25: Finding Peace in Prophecy</a>
+                            <span class="text-sm text-gray-500">Read &rarr;</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-1 space-y-8">
+                
+                <div class="study-card border-t-blue-500">
+                    <h3 class="text-xl font-bold primary-text mb-3 flex items-center">
+                        <i data-lucide="book-open-check" class="w-5 h-5 mr-2 accent-text"></i> Sabbath School Lesson
+                    </h3>
+                    <p class="text-gray-700 mb-4">Quarter 4, 2025: The Book of Daniel</p>
+                    <a href="resources.html" class="primary-bg text-white w-full block text-center py-2 rounded-lg font-bold hover:bg-blue-700 transition duration-200">
+                        Download Latest Guide
+                    </a>
+                </div>
+                
+                <div class="study-card border-t-red-500">
+                    <h3 class="text-xl font-bold accent-text mb-3 flex items-center">
+                        <i data-lucide="bible" class="w-5 h-5 mr-2 primary-text"></i> Integrated Bible Reader
+                    </h3>
+                    <p class="text-gray-700 mb-4">Search, read, and cross-reference scripture right here on our site.</p>
+                    <a href="bible-reader.html" class="accent-bg text-white w-full block text-center py-2 rounded-lg font-bold hover:bg-red-700 transition duration-200">
+                        Go to Bible Reader
+                    </a>
+                </div>
+                
+                <div class="study-card border-t-green-500">
+                    <h3 class="text-xl font-bold text-green-700 mb-3 flex items-center">
+                        <i data-lucide="handshake" class="w-5 h-5 mr-2 primary-text"></i> Need Prayer?
+                    </h3>
+                    <p class="text-gray-700 mb-4">Share your request with our dedicated intercessory team.</p>
+                    <a href="prayer.html" class="bg-green-500 text-white w-full block text-center py-2 rounded-lg font-bold hover:bg-green-700 transition duration-200">
+                        Submit a Prayer Request
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools.</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Dropdown toggle logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                             dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
