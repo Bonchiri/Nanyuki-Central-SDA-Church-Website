@@ -9,7 +9,7 @@
     <script type="module" src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /*             Updated colors to match the project's main palette: 
+        /*             Updated colors to match the project's main palette: 
             Deep Teal (#004d40) and Deep Orange (#ff6f00)
         */
         :root {
@@ -34,19 +34,17 @@
             background-color: var(--color-primary);
         }
 
-        /* Helper classes for the new mobile dropdown */
-        .mobile-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 5%;
-            width: 200px;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 990;
-            padding: 5px 0;
+        /* --- CUSTOM MOBILE DROPDOWN POSITION FIX --- */
+        /* Forces the menu to align 16px (equivalent to px-4) from the right edge,
+            right below the mobile menu button. */
+        #mobile-dropdown {
+            right: 16px !important;
+            left: auto !important; /* Ensure no left positioning interferes */
         }
+        /* ------------------------------------------- */
+
+        /* The following CSS is for styling the mobile dropdown contents, 
+           but the positioning rules (`.mobile-dropdown`) are now redundant and removed. */
 
         .mobile-dropdown a {
             display: block;
@@ -106,7 +104,7 @@
             </div>
         </div>
 
-                <div id="mobile-dropdown" class="mobile-dropdown lg:hidden hidden">
+                <div id="mobile-dropdown" class="lg:hidden absolute top-full z-50 w-48 bg-white text-gray-800 rounded-lg shadow-2xl py-2 hidden">
             <a href="devotionals.html">Study Hub</a>
             <a href="bible-reader.html">Bible Reader</a>
             <a href="prayer.html">Prayer</a>
@@ -193,6 +191,55 @@
         </div>
     </footer>
     
-        <script src="script.js"></script>
+        <script>
+            
+            // Desktop Dropdown Logic
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
+
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
+
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Mobile Dropdown Logic
+            const mobileDropdownBtn = document.getElementById('mobile-menu-btn');
+            const mobileDropdown = document.getElementById('mobile-dropdown');
+            
+            if (mobileDropdownBtn && mobileDropdown) {
+                mobileDropdownBtn.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Prevent document click listener from firing immediately
+                    mobileDropdown.classList.toggle('hidden');
+                });
+
+                // Close the menu if the user clicks anywhere else on the screen
+                document.addEventListener('click', (event) => {
+                    if (!mobileDropdown.contains(event.target) && !mobileDropdownBtn.contains(event.target)) {
+                        mobileDropdown.classList.add('hidden');
+                    }
+                });
+            }
+            
+            
+            // Initialize Lucide icons
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            });
+        </script>
 </body>
 </html>

@@ -9,7 +9,7 @@
     <script type="module" src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /*             Updated colors to match the project's main palette: 
+        /*             Updated colors to match the project's main palette: 
             Deep Teal (#004d40) and Deep Orange (#ff6f00)
         */
         :root {
@@ -48,19 +48,14 @@
         .border-l-blue-500 { border-left-color: #3b82f6 !important; }
         .border-l-green-500 { border-left-color: #10b981 !important; }
 
-        /* Mobile Dropdown Styling (Copied from previous step) */
-        .mobile-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 5%;
-            width: 200px;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 990;
-            padding: 5px 0;
-        }
+        /* --- CUSTOM MOBILE DROPDOWN POSITION FIX --- */
+        /* Forces the menu to align 16px (equivalent to px-4) from the right edge,
+           right below the mobile menu button. */
+        #mobile-dropdown {
+            right: 16px !important;
+            left: auto !important; /* Ensure no left positioning interferes */
+        }
+        /* ------------------------------------------- */
 
         .mobile-dropdown a {
             display: block;
@@ -102,7 +97,6 @@
                         <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
                         <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
                         <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
-                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
                     </div>
                 </div>
             </nav>
@@ -120,7 +114,7 @@
             </div>
         </div>
 
-                <div id="mobile-dropdown" class="mobile-dropdown lg:hidden hidden">
+                <div id="mobile-dropdown" class="lg:hidden absolute top-full z-50 w-48 bg-white text-gray-800 rounded-lg shadow-2xl py-2 hidden">
             <a href="devotionals.html">Study Hub</a>
             <a href="bible-reader.html">Bible Reader</a>
             <a href="prayer.html">Prayer</a>
@@ -314,7 +308,7 @@
                     // Toggles the 'hidden' class to show/hide the mobile dropdown
                     mobileDropdown.classList.toggle('hidden');
                 });
-                
+                
                 // Close mobile dropdown when clicking outside
                 document.addEventListener('click', (event) => {
                     if (!mobileMenuBtn.contains(event.target) && !mobileDropdown.contains(event.target) && !mobileDropdown.classList.contains('hidden')) {
