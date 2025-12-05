@@ -1,73 +1,90 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // =========================================================
-    // 1. DYNAMIC ANNOUNCEMENT LOADER
-    //    Fetches content from announcements.txt and injects it.
+    // V4 API CONFIGURATION
+    // =========================================================
+    // The previous logic has been replaced with the modern API V4 fetch
+    
+    // ✅ Inserted your API Key
+    const API_KEY = 'AIzaSyBRM0zxx-pH4lpFcZRfBvVOq9NbpozH3uk'; 
+    
+    // Your confirmed Sheet ID
+    const SHEET_ID = '1oY_cs8JkXfKssTXqGo-RrKEO5EGpnas44fl91Gx5HCY';
+    
+    // Assuming your announcements are on a sheet named 'Announcements'
+    // and data starts from row 2 (header in row 1)
+    const RANGE = 'Announcements!A2:D'; 
+
+    const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+
+
+    // =========================================================
+    // 1. DYNAMIC ANNOUNCEMENT LOADER (using API V4)
     // =========================================================
 
-    function loadAnnouncements() {
-        // Target area where announcements will be injected (from announcements.html)
-        const announcementsList = document.getElementById('announcements-list');
+    function loadAllAnnouncementsV4() {
         
-        // Safety check: only run this function if the target div exists
-        if (!announcementsList) {
-            return;
-        }
+        const container = document.getElementById('announcement-list-container');
+        
+        // This map correctly connects the Sheet value to the Tailwind border class
+        const categoryMap = {
+            'Red': 'border-l-red-500',
+            'Blue': 'border-l-blue-500',
+            'Green': 'border-l-green-500',
+            'Default': 'border-l-gray-400' 
+        };
 
-        // Display loading message
-        announcementsList.innerHTML = '<p class="text-center text-lg text-gray-500">Loading announcements...</p>';
+        // Updated loading message to reflect V4 API usage
+        container.innerHTML = '<p class="text-center text-lg text-gray-500 py-10">Loading announcements using Google Sheets API V4...</p>';
 
-        fetch('announcements.txt')
+        fetch(API_URL)
             .then(response => {
-                // Check for HTTP errors (e.g., 404 Not Found)
                 if (!response.ok) {
-                    throw new Error(`HTTP Error: Failed to load announcements. Status: ${response.status} ${response.statusText}`);
+                    // Handles API errors (e.g., wrong key, permissions)
+                    return response.json().then(errorData => {
+                        console.error('API Error Response:', errorData);
+                        throw new Error(errorData.error.message || 'Network response was not ok');
+                    });
                 }
-                return response.text();
+                return response.json();
             })
-            .then(plainText => {
-                
-                // Clear the loading message
-                announcementsList.innerHTML = ''; 
+            .then(data => {
+                const entries = data.values; // V4 returns data in 'values' array
+                container.innerHTML = ''; // Clear the loading message
 
-                // Split the text file content using the triple hyphen separator
-                const announcements = plainText
-                    .split('---')
-                    .map(item => item.trim())
-                    .filter(item => item.length > 0);
-
-                if (announcements.length === 0) {
-                    announcementsList.innerHTML = '<p class="text-center text-lg text-gray-600">There are no active announcements at this time. Please check back later.</p>';
+                if (!entries || entries.length === 0) {
+                    container.innerHTML = '<p class="text-center text-gray-500 py-10">No announcements posted in the sheet range.</p>';
                     return;
                 }
 
-                // Generate HTML cards for each announcement
-                announcements.forEach((announcementText) => {
-                    const card = document.createElement('div');
-                    card.className = 'announcement-card';
+                entries.forEach(row => {
+                    // Data is mapped by column index: [0]=Title, [1]=Date, [2]=Details, [3]=Category
+                    const title = row[0] || 'No Title';
+                    const date = row[1] || 'N/A';
+                    const details = row[2] || '';
+                    const category = row[3] || 'Default';
                     
-                    // Convert newlines (\n) to <br> tags for correct display in HTML
-                    const formattedText = announcementText.replace(/\n/g, '<br>');
+                    // 🔥 This line gets the correct CSS class (Red, Blue, Green, or Default border)
+                    const categoryClass = categoryMap[category] || categoryMap['Default'];
                     
-                    const cardHTML = `<p>${formattedText}</p>`;
-                    
-                    card.innerHTML = cardHTML;
-                    announcementsList.appendChild(card);
+                    const cardHTML = `
+                        <div class="announcement-card ${categoryClass}">
+                            <div class="flex justify-between items-start">
+                                <h2 class="text-2xl font-bold primary-text mb-1">${title}</h2>
+                                ${category === 'Red' ? '<span class="text-xs font-semibold text-white px-3 py-1 rounded-full bg-red-500">URGENT</span>' : ''}
+                            </div>
+                            <p class="text-gray-500 text-sm mb-3">Posted: ${date}</p>
+                            <p class="text-gray-700">${details}</p>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', cardHTML);
                 });
             })
             .catch(error => {
-                // Display a detailed error message directly on the page for debugging
-                console.error('Error loading announcements:', error);
-                
-                announcementsList.innerHTML = `
-                    <div style="background-color: #ffe0e0; padding: 20px; border: 1px solid #f00; border-radius: 8px; text-align: center;">
-                        <h3 style="color: #c00; margin-top: 0;">⚠️ Content Loading Error</h3>
-                        <p>The system failed to load content from <strong>announcements.txt</strong>.</p>
-                        <p><strong>Common Cause:</strong> This typically happens due to browser security restrictions when viewing the page from a local file (using <code>file://</code>).</p>
-                        <p><strong>Actual Error:</strong> ${error.message}</p>
-                        <p><strong>Solution:</strong> Please use a local web server (like VS Code's "Live Server" extension) to view the site using an <code>http://</code> address.</p>
-                    </div>
-                `;
+                console.error('Fatal Fetch Error:', error);
+                container.innerHTML = `<p class="text-center text-red-600 font-semibold py-10">
+                    Data Load Error: Please check the API Key, Sheet Sharing, and the tab name in the script.
+                </p>`;
             });
     }
     
@@ -75,10 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. INITIALIZATION CALLS
     // =========================================================
     
-    // Start the loading process for announcements when the page loads
-    loadAnnouncements();
+    // ✅ Call the new V4 function
+    loadAllAnnouncementsV4(); 
 
-
-    // NOTE: Future features like member login logic, event filters, 
-    // etc., will be added here.
+    // ... (Your existing dropdown/mobile menu logic will follow this block)
 });
