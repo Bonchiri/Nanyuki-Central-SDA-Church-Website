@@ -3,26 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Give - Nanyuki Central SDA</title>
+    <title>Nanyuki Central SDA Church - Welcome!</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /* Retained: New Deep Teal / Deep Orange Palette */
+        /* --- CUSTOM MOBILE DROPDOWN POSITION FIX --- */
+        /* This rule uses !important to override any conflicting Tailwind or cached styles,
+           forcing the menu to align 16px (equivalent to px-4) from the right edge. */
+        #mobile-dropdown {
+            right: 16px !important;
+            left: auto !important; /* Ensure no left positioning interferes */
+        }
+        /* ------------------------------------------- */
+
+        /* This is for the main body content sections */
+        .section-content {
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        /* Variables and base styles */
         :root {
-            --color-primary: #004d40; /* Deep Teal/Dark Green */
-            --color-accent: #ff6f00; /* Deep Orange/Gold */
-            --color-bg: #f5f5f5; /* Light Gray Background */
-            --color-text-dark: #263238; /* Dark Text */
-            --color-text-light: #ffffff;
+            --color-primary: #004d99; /* Deep SDA Blue */
+            --color-accent: #e53935; /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;
         }
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-bg);
-            color: var(--color-text-dark);
-            margin: 0;
+            color: #1e293b;
+            margin: 0; 
         }
 
         .primary-bg { background-color: var(--color-primary); }
@@ -30,21 +49,62 @@
         .accent-bg { background-color: var(--color-accent); }
         .accent-text { color: var(--color-accent); }
 
-        /* Styling for the instruction cards */
-        .giving-step {
+        /* Retained basic styling for buttons and hero */
+        .hero-section {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #c62828;
+        }
+        
+        /* --- DYNAMIC CARD STYLES --- */
+        .announcement-card {
+            background-color: white;
             padding: 1.5rem;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            /* Base border color using primary variable */
+            border-left: 5px solid var(--color-primary); 
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: left; /* Crucial for internal card content */
         }
-        .giving-step:hover {
+        .announcement-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
             transform: translateY(-2px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
+        /* Custom border colors corresponding to the Google Sheet 'Category' column */
+        .border-l-red-500 { border-left-color: #ef4444 !important; }
+        .border-l-blue-500 { border-left-color: #3b82f6 !important; }
+        .border-l-green-500 { border-left-color: #10b981 !important; }
+        .border-l-gray-400 { border-left-color: #9ca3af !important; }
+        
     </style>
 </head>
 <body>
-    <header class="primary-bg shadow-xl text-white sticky top-0 z-40">
+
+    <header class="primary-bg shadow-xl text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i data-lucide="church" class="w-6 h-6"></i>
@@ -52,7 +112,7 @@
             </div>
             
             <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
-                <a href="index.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Home</a>
+                <a href="index.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 border-b-2 border-white">Home</a>
                 <a href="announcements.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Announcements</a>
                 <a href="events.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Events</a>
                 <a href="media.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Media</a>
@@ -70,24 +130,40 @@
                         <a href="devotionals.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Devotionals</a>
                         <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
                         <a href="resources.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
-                        <a href="bible-reader.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Bible Reader</a>
-                        <a href="prayer.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Prayer Request</a>
                     </div>
                 </div>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold transition duration-150 shadow-md flex items-center border-2 border-white hover:opacity-90">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
                     <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
                 </a>
                 <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
                     Login
                 </a>
-                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition" aria-label="Toggle menu">
+                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
+
+        <nav id="mobile-dropdown" class="lg:hidden absolute top-full z-50 w-48 bg-white text-gray-800 rounded-lg shadow-2xl py-2 hidden">
+            <div class="space-y-1 font-semibold text-base">
+                <a href="index.html" class="block py-2 px-4 hover:bg-gray-100 transition duration-100">Home</a>
+                <a href="announcements.html" class="block py-2 px-4 hover:bg-gray-100 transition duration-100">Announcements</a>
+                <a href="events.html" class="block py-2 px-4 hover:bg-gray-100 transition duration-100">Events</a>
+                <a href="media.html" class="block py-2 px-4 hover:bg-gray-100 transition duration-100">Media</a>
+                <a href="contact.html" class="block py-2 px-4 hover:bg-gray-100 transition duration-100">Contact</a>
+                
+                <div class="pt-2 mt-2 border-t border-gray-200">
+                    <p class="text-xs font-light text-gray-500 px-4 pt-1 mb-1">Resources</p>
+                    <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                    <a href="devotionals.html" class="block py-2 px-4 text-sm hover:bg-gray-100 transition duration-100">Devotionals</a>
+                    <a href="ministries.html" class="block py-2 px-4 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                    <a href="resources.html" class="block py-2 px-4 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 font-semibold text-base bg-white/95 text-gray-800 border-t border-gray-200" style="backdrop-filter: blur(8px);">
