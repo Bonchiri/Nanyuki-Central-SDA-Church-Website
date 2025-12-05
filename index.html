@@ -24,7 +24,7 @@
         /* Variables and base styles */
         :root {
             --color-primary: #004d99; /* Deep SDA Blue */
-            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-accent: #e53935; /* Maroon/Red Accent */
             --color-bg: #f5f7f9;
         }
         
@@ -91,12 +91,11 @@
         .border-l-green-500 { border-left-color: #10b981 !important; }
         .border-l-gray-400 { border-left-color: #9ca3af !important; }
         
-        /* NOTE: The old .slide-in and .drawer-hidden styles are no longer necessary for the dropdown */
     </style>
 </head>
 <body>
 
-    <header class="primary-bg shadow-xl text-white **relative**">
+    <header class="primary-bg shadow-xl text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i data-lucide="church" class="w-6 h-6"></i>
@@ -139,7 +138,7 @@
             </div>
         </div>
 
-        <nav id="mobile-dropdown" class="lg:hidden absolute **top-full right-4** z-50 **w-56** bg-white text-gray-800 rounded-lg shadow-2xl py-2 hidden">
+        <nav id="mobile-dropdown" class="lg:hidden absolute top-full right-4 z-50 w-56 bg-white text-gray-800 rounded-lg shadow-2xl py-2 hidden">
             <div class="space-y-1 font-semibold text-base">
                 <a href="index.html" class="block py-2 px-4 hover:bg-gray-100 transition duration-100">Home</a>
                 <a href="announcements.html" class="block py-2 px-4 hover:bg-gray-100 transition duration-100">Announcements</a>
@@ -208,7 +207,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
-              &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
+             &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
         </div>
     </footer>
     
@@ -331,16 +330,13 @@
                 });
             }
 
-            // 🆕 NEW Mobile Dropdown Logic
-            // Note: We use the existing button ID 'mobile-menu-btn'
+            // Mobile Dropdown Logic (Simple toggle to hide/show)
             const mobileDropdownBtn = document.getElementById('mobile-menu-btn');
-            // Note: We reference the NEW dropdown ID 'mobile-dropdown'
             const mobileDropdown = document.getElementById('mobile-dropdown');
             
             if (mobileDropdownBtn && mobileDropdown) {
                 mobileDropdownBtn.addEventListener('click', (event) => {
                     event.stopPropagation(); // Prevent document click listener from firing immediately
-                    // This is the simplest toggle: show/hide the dropdown element
                     mobileDropdown.classList.toggle('hidden');
                 });
 
