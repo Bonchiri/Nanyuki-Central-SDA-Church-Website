@@ -1,3 +1,10 @@
+Got it. Here is the complete, updated code with the mobile menu drawer width set to 25% (w-1/4) and all the necessary JavaScript and HTML changes for the right-side sliding drawer functionality.
+
+I have updated the CSS to include the necessary slide-in classes and modified the JavaScript to correctly handle the overlay and the sliding motion.
+
+💻 Complete Updated Code (25% Width Drawer)
+HTML
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +28,7 @@
             text-align: center;
         }
 
-        /* Variables and base styles from Code 2 */
+        /* Variables and base styles */
         :root {
             --color-primary: #004d99; /* Deep SDA Blue */
             --color-accent: #e53935;  /* Maroon/Red Accent */
@@ -32,7 +39,6 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--color-bg);
             color: #1e293b;
-            /* Important: Removes default margin */
             margin: 0; 
         }
 
@@ -41,9 +47,9 @@
         .accent-bg { background-color: var(--color-accent); }
         .accent-text { color: var(--color-accent); }
 
-        /* Retained basic styling for buttons and hero from Code 1, adapted to new variables */
+        /* Retained basic styling for buttons and hero */
         .hero-section {
-            background-color: var(--color-primary); /* Use primary color for hero */
+            background-color: var(--color-primary);
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -68,7 +74,40 @@
             transition: background-color 0.2s;
         }
         .btn-primary:hover {
-            background-color: #c62828; /* Darker red on hover */
+            background-color: #c62828;
+        }
+        
+        /* --- DYNAMIC CARD STYLES --- */
+        .announcement-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            /* Base border color using primary variable */
+            border-left: 5px solid var(--color-primary); 
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: left; /* Crucial for internal card content */
+        }
+        .announcement-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+        /* Custom border colors corresponding to the Google Sheet 'Category' column */
+        .border-l-red-500 { border-left-color: #ef4444 !important; }
+        .border-l-blue-500 { border-left-color: #3b82f6 !important; }
+        .border-l-green-500 { border-left-color: #10b981 !important; }
+        .border-l-gray-400 { border-left-color: #9ca3af !important; }
+
+        /* --- NEW MOBILE DRAWER STYLES --- */
+        /* Enables smooth transition for the translate property */
+        .slide-in {
+            transition: transform 0.3s ease-out, visibility 0.3s;
+        }
+
+        /* Hides the drawer off the screen by default */
+        .drawer-hidden {
+            transform: translateX(100%);
+            visibility: hidden;
         }
     </style>
 </head>
@@ -118,19 +157,28 @@
             </div>
         </div>
 
-        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004285]/90">
-            <a href="index.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">Home</a>
-            <a href="announcements.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Announcements</a>
-            <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
-            <a href="media.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Media</a>
-            <a href="contact.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Contact</a>
-            
-            <div class="pt-2 mt-2 border-t border-gray-600">
-                <p class="text-sm font-light text-gray-300 px-3 pt-1">Resources</p>
-                <a href="about.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">About Us</a>
-                <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Devotionals</a>
-                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Ministries</a>
-                <a href="resources.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Beliefs/Resources</a>
+        <div id="mobile-menu-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 pointer-events-none opacity-0"></div>
+
+        <nav id="mobile-menu" class="lg:hidden fixed top-0 right-0 h-full **w-1/4** bg-[#004285] text-white z-50 overflow-y-auto slide-in drawer-hidden">
+            <div class="p-4">
+                <button id="mobile-menu-close-btn" class="absolute top-4 right-4 text-white p-2 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <div class="pt-10 space-y-2 font-semibold text-base">
+                    <a href="index.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">Home</a>
+                    <a href="announcements.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Announcements</a>
+                    <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
+                    <a href="media.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Media</a>
+                    <a href="contact.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Contact</a>
+                    
+                    <div class="pt-2 mt-2 border-t border-gray-600">
+                        <p class="text-sm font-light text-gray-300 px-3 pt-1">Resources</p>
+                        <a href="about.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">About Us</a>
+                        <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Devotionals</a>
+                        <a href="ministries.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Ministries</a>
+                        <a href="resources.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Beliefs/Resources</a>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -139,7 +187,7 @@
         <section class="hero-section">
             <h1>Welcome to Nanyuki Central SDA Church</h1>
             <p>A Christ-centered community of faith, love, and service in Nanyuki.</p>
-            <a href="about.html" class="btn-primary">Get Started</a>
+            <a href="about.html" class="btn-primary" style="background-color: var(--color-primary); margin-top: 20px;">Read Our Mission & Vision &rarr;</a>
         </section>
 
         <section id="about" class="section-content">
@@ -150,7 +198,12 @@
 
         <section id="announcements" class="section-content">
             <h2 class="text-3xl font-bold primary-text mb-4">Latest Announcements</h2>
-            <div class="announcement-item text-lg">No announcements yet. Check our <a href="announcements.html" class="accent-text font-semibold hover:underline">Announcements Page</a> for updates!</div>
+            
+            <div id="announcement-list-container-home" class="space-y-6">
+                <p class="text-gray-500 py-10">Loading latest announcements...</p>
+            </div>
+
+            <a href="announcements.html" class="btn-primary" style="background-color: var(--color-primary); margin-top: 20px;">View All Announcements &rarr;</a>
         </section>
 
         <section id="events" class="section-content">
@@ -180,18 +233,106 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
-             &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
+              &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
         </div>
     </footer>
     
     <script>
-        // Dropdown toggle logic
+        // =========================================================
+        // V4 API CONFIGURATION
+        // =========================================================
+        
+        // ✅ API Key inserted here
+        const API_KEY = 'AIzaSyBRM0zxx-pH4lpFcZRfBvVOq9NbpozH3uk'; 
+        
+        // Your confirmed Sheet ID
+        const SHEET_ID = '1oY_cs8JkXfKssTXqGo-RrKEO5EGpnas44fl91Gx5HCY';
+        
+        // Assuming your announcements are on a sheet named 'Announcements'
+        // and you want the data starting from row 2 (header in row 1)
+        const RANGE = 'Announcements!A2:D'; 
+
+        const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+
+
+        // =========================================================
+        // 1. DYNAMIC HOME ANNOUNCEMENT SCRIPT (Top 3 Cards) - V4 API
+        // =========================================================
+
+        function loadHomeAnnouncementsV4() {
+            
+            // This is the correct container ID for the homepage
+            const container = document.getElementById('announcement-list-container-home'); 
+            
+            const categoryMap = {
+                'Red': 'border-l-red-500',
+                'Blue': 'border-l-blue-500',
+                'Green': 'border-l-green-500',
+                'Default': 'border-l-gray-400' 
+            };
+
+            container.innerHTML = '<p class="text-center text-lg text-gray-500 py-10">Loading announcements using Google Sheets API...</p>';
+
+            fetch(API_URL)
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(errorData => {
+                            console.error('API Error Response:', errorData);
+                            throw new Error(errorData.error.message || 'Network response was not ok');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const entries = data.values; // V4 returns data in 'values' array
+                    container.innerHTML = ''; // Clear the "Loading..." message
+
+                    if (!entries || entries.length === 0) {
+                        container.innerHTML = '<p class="text-center text-gray-500 py-10">No latest announcements posted.</p>';
+                        return;
+                    }
+                    
+                    // Process only the TOP 3 entries for the homepage (entries.slice(0, 3))
+                    entries.slice(0, 3).forEach(row => {
+                        // Data is mapped by column index: [0]=Title, [1]=Date, [2]=Details, [3]=Category
+                        const title = row[0] || 'No Title';
+                        const date = row[1] || 'N/A';
+                        const details = row[2] || '';
+                        const category = row[3] || 'Default';
+                        
+                        // 1. Get the specific color class
+                        const categoryClass = categoryMap[category] || categoryMap['Default'];
+                        
+                        // 2. Construct the HTML card, applying the color class to the card div
+                        const cardHTML = `
+                            <div class="announcement-card ${categoryClass}"> 
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-xl font-bold primary-text mb-1">${title}</h3>
+                                    ${category === 'Red' ? '<span class="text-xs font-semibold text-white px-3 py-1 rounded-full bg-red-500">URGENT</span>' : ''} 
+                                </div>
+                                <p class="text-gray-500 text-sm mb-3">${date}</p>
+                                <p class="text-gray-700">${details}</p>
+                            </div>
+                        `;
+                        container.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                })
+                .catch(error => {
+                    console.error('Fatal Fetch Error:', error);
+                    container.innerHTML = `<p class="text-center text-red-600 font-semibold py-10">
+                        Failed to load announcements. Check the API Key and Sheet sharing settings.
+                    </p>`;
+                });
+        }
+
+
         document.addEventListener('DOMContentLoaded', () => {
+            // ✅ Run the new dynamic announcement loader for the homepage
+            loadHomeAnnouncementsV4();
             
             // =========================================================
             // CORE NAVIGATION LOGIC (Dropdown and Mobile Menu)
             // =========================================================
-
             const dropdownBtn = document.getElementById('community-dropdown-btn');
             const dropdownMenu = document.getElementById('community-dropdown-menu');
             const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
@@ -199,12 +340,38 @@
             // Mobile Menu Logic
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay'); // Get the overlay element
 
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    // Toggles the 'hidden' class to show/hide the mobile menu
-                    mobileMenu.classList.toggle('hidden');
-                });
+
+            const toggleMobileMenu = () => {
+                const isHidden = mobileMenu.classList.contains('drawer-hidden');
+                
+                // Toggle Menu Visibility and Slide
+                mobileMenu.classList.toggle('drawer-hidden', !isHidden);
+                
+                // Toggle Overlay Visibility and Opacity
+                if (isHidden) {
+                    mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    // Slight delay before adding pointer-events-none to allow opacity transition to finish
+                    mobileMenuOverlay.classList.add('opacity-0');
+                    setTimeout(() => {
+                        mobileMenuOverlay.classList.add('pointer-events-none');
+                    }, 300); 
+                }
+            };
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+            if (mobileMenuCloseBtn) {
+                mobileMenuCloseBtn.addEventListener('click', toggleMobileMenu);
+            }
+            
+            // Close the menu when clicking the overlay
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
             }
 
 
