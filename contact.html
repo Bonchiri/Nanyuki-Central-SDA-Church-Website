@@ -11,7 +11,7 @@
     <style>
         :root {
             --color-primary: #004d99; /* Deep SDA Blue */
-            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
             --color-bg: #f5f7f9;
         }
         
@@ -71,7 +71,9 @@
                 <a href="announcements.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Announcements</a>
                 <a href="events.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Events</a>
                 <a href="media.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Media</a>
-                <a href="contact.html" class="border-b-2 border-white pb-1 transition duration-150">Contact</a> <span class="text-gray-400">|</span>
+                <a href="contact.html" class="border-b-2 border-white pb-1 transition duration-150">Contact</a> 
+                
+                <span class="text-gray-400">|</span>
 
                 <div class="relative group">
                     <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
@@ -102,19 +104,24 @@
             </div>
         </div>
 
-        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004285]/90">
-            <a href="index.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Home</a>
-            <a href="announcements.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Announcements</a>
-            <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
-            <a href="media.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Media</a>
-            <a href="contact.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">Contact</a> <div class="pt-2 mt-2 border-t border-gray-600">
-                <p class="text-sm font-light text-gray-300 px-3 pt-1">Community & Resources</p>
-                <a href="about.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">About Us</a>
-                <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Devotionals</a>
-                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Ministries</a>
-                <a href="resources.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Beliefs/Resources</a>
-                <a href="bible-reader.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Bible Reader</a>
-                <a href="prayer.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Prayer Request</a>
+        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 font-semibold text-base **bg-white/95 text-gray-800 border-t border-gray-200**" style="**backdrop-filter: blur(8px);**">
+            
+            <div class="space-y-1 pt-2">
+                <a href="index.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Home</a>
+                <a href="announcements.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Announcements</a>
+                <a href="events.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Events</a>
+                <a href="media.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Media</a>
+                <a href="contact.html" class="block py-2 px-3 **primary-bg text-white** rounded-lg font-bold transition duration-100">Contact</a>
+            </div>
+            
+            <div class="pt-4 mt-4 border-t border-gray-200 space-y-1">
+                <p class="text-xs font-bold primary-text px-3 mb-1 uppercase tracking-wider">Community & Resources</p>
+                <a href="about.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">About Us</a>
+                <a href="devotionals.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Devotionals</a>
+                <a href="ministries.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Ministries</a>
+                <a href="resources.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Beliefs/Resources</a>
+                <a href="bible-reader.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Bible Reader</a>
+                <a href="prayer.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Prayer Request</a>
             </div>
         </nav>
     </header>
@@ -195,7 +202,8 @@
             <div class="text-sm text-gray-400 space-x-4">
                 <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
                 <span class="text-gray-500">|</span>
-                <a href="contact.html" class="text-white font-bold transition">Contact Us</a> <span class="text-gray-500">|</span>
+                <a href="contact.html" class="**text-white font-bold** transition">Contact Us</a> 
+                <span class="text-gray-500">|</span>
                 <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
             </div>
         </div>
@@ -275,7 +283,7 @@
                     if (response.ok) {
                         statusMessage.className = 'form-message success';
                         statusMessage.innerHTML = '✅ Thank you! Your message has been sent successfully.';
-                        form.reset(); 
+                        form.reset(); 
                     } else {
                         response.json().then(data => {
                             let errorMessage = '❌ Oops! There was a problem submitting your form.';

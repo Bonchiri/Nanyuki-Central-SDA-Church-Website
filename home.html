@@ -9,7 +9,7 @@
     <script type="module" src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /* CORRECTION 1: Standardized to Deep Teal / Deep Orange Palette */
+        /* Standardized to Deep Teal / Deep Orange Palette */
         :root {
             --color-primary: #004d40; /* Deep Teal/Dark Green */
             --color-accent: #ff6f00; /* Deep Orange/Gold */
@@ -31,7 +31,7 @@
         .accent-text { color: var(--color-accent); }
         
         .hero {
-            /* CORRECTION 6: Updated hero gradient and placeholder URL color to Deep Teal (#004d40) */
+            /* Updated hero gradient and placeholder URL color to Deep Teal (#004d40) */
             background: linear-gradient(rgba(0, 77, 64, 0.8), rgba(0, 77, 64, 0.9)), url('https://placehold.co/1200x600/004d40/ffffff/png?text=Faith+Hope+Love') center/cover no-repeat;
             color: white;
             padding: 8rem 0;
@@ -84,7 +84,7 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-orange-700 transition duration-150 shadow-md flex items-center">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold transition duration-150 shadow-md flex items-center hover:opacity-90">
                     <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
                 </a>
                 <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
@@ -97,28 +97,31 @@
         </div>
     </header>
 
-    <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004d40]/90">
-        <a href="index.html" class="block py-2 px-3 primary-bg rounded-lg text-white font-bold transition duration-100">Home (Active)</a>
-        <a href="announcements.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Announcements</a>
-        <a href="events.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Events</a>
-        <a href="media.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Media</a>
-        <a href="contact.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Contact</a>
-        
-        <div class="pt-2 mt-2 border-t border-gray-600">
-            <p class="text-sm font-light text-gray-300 px-3 pt-1">Study & Community</p>
-            <a href="bible-reader.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Bible Reader</a>
-            <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Study Hub/Devotionals</a>
-            <a href="prayer.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Prayer Request</a>
-            <a href="about.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">About Us</a>
-            <a href="ministries.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Ministries</a>
-            <a href="resources.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Beliefs/Resources</a>
+    <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 font-semibold text-base bg-white/95 text-gray-800 border-t border-gray-200" style="backdrop-filter: blur(8px);">
+        <div class="space-y-1 pt-2">
+            <a href="index.html" class="block py-2 px-3 primary-bg rounded-lg text-white font-bold transition duration-100">Home (Active)</a>
+            <a href="announcements.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Announcements</a>
+            <a href="events.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Events</a>
+            <a href="media.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Media</a>
+            <a href="contact.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Contact</a>
         </div>
-        <div class="pt-2 mt-2 border-t border-gray-600">
-            <a href="giving.html" class="block py-2 px-3 accent-bg rounded-lg text-white font-bold transition duration-100 flex items-center justify-center mb-2 hover:bg-orange-700">
-                 <i data-lucide="hand-coins" class="w-4 h-4 mr-2"></i> Give Now
+        
+        <div class="pt-4 mt-4 border-t border-gray-200 space-y-1">
+            <p class="text-xs font-bold primary-text px-3 mb-1 uppercase tracking-wider">Study & Community</p>
+            <a href="bible-reader.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Bible Reader</a>
+            <a href="devotionals.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Study Hub/Devotionals</a>
+            <a href="prayer.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Prayer Request</a>
+            <a href="about.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">About Us</a>
+            <a href="ministries.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Ministries</a>
+            <a href="resources.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Beliefs/Resources</a>
+        </div>
+
+        <div class="pt-4 mt-4 border-t border-gray-200">
+            <a href="giving.html" class="block py-2 px-3 accent-bg rounded-lg text-white font-bold transition duration-100 flex items-center justify-center hover:opacity-90 mb-2">
+                <i data-lucide="hand-coins" class="w-4 h-4 mr-2"></i> Give Now
             </a>
-            <a href="login.html" class="block py-2 px-3 bg-white text-gray-800 rounded-lg font-bold transition duration-100 flex items-center justify-center hover:bg-gray-100">
-                 <i data-lucide="log-in" class="w-4 h-4 mr-2"></i> Login
+            <a href="login.html" class="block py-2 px-3 bg-white text-gray-800 rounded-lg font-bold transition duration-100 flex items-center justify-center hover:bg-gray-100 border border-gray-300">
+                <i data-lucide="log-in" class="w-4 h-4 mr-2"></i> Login
             </a>
         </div>
     </nav>
@@ -129,7 +132,7 @@
                 <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">Welcome to Nanyuki Central SDA</h1>
                 <p class="text-xl mb-8 font-light max-w-2xl mx-auto">Growing Together in Worship, Fellowship, and Service. Experience the power of God's love.</p>
                 <div class="flex justify-center space-x-4">
-                    <a href="events.html" class="accent-bg text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-orange-700 transition duration-300 transform hover:scale-105 flex items-center">
+                    <a href="events.html" class="accent-bg text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105 flex items-center">
                         <i data-lucide="calendar-check" class="w-5 h-5 mr-2"></i> View Events
                     </a>
                     <a href="giving.html" class="bg-white text-gray-800 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105 flex items-center">
@@ -149,7 +152,7 @@
                         Go to Resources <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
                     </a>
                 </div>
-                <div class="card border-t-4 border-t-blue-500 text-center">
+                <div class="card border-t-4 border-t-primary-bg text-center">
                     <i data-lucide="users" class="w-10 h-10 primary-text mx-auto mb-3"></i>
                     <h2 class="text-xl font-bold primary-text mb-2">Ministries</h2>
                     <p class="text-gray-600 mb-4">Find a group or ministry where you can serve and connect.</p>
@@ -157,8 +160,8 @@
                         Explore Ministries <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
                     </a>
                 </div>
-                <div class="card border-t-4 border-t-green-500 text-center">
-                    <i data-lucide="map-pin" class="w-10 h-10 text-green-600 mx-auto mb-3"></i>
+                <div class="card border-t-4 border-t-accent-bg text-center">
+                    <i data-lucide="map-pin" class="w-10 h-10 accent-text mx-auto mb-3"></i>
                     <h2 class="text-xl font-bold primary-text mb-2">Worship Times</h2>
                     <p class="text-gray-600 mb-4">Join us every Saturday for worship and fellowship.</p>
                     <p class="text-lg font-bold">Sabbath School: 9:00 AM</p>

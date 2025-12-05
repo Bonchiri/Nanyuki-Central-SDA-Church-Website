@@ -12,8 +12,8 @@
         /* REVERTED TO STANDARD SDA BLUE/RED PALETTE for consistency */
         :root {
             --color-primary: #004d99; /* Deep SDA Blue */
-            --color-accent: #e53935;  /* Maroon/Red Accent */
-            --color-bg: #f5f7f9;      /* Light Gray Background */
+            --color-accent: #e53935;  /* Maroon/Red Accent */
+            --color-bg: #f5f7f9;      /* Light Gray Background */
             --color-text-dark: #1e293b; /* Dark Text */
             --color-text-light: #ffffff;
         }
@@ -32,7 +32,7 @@
         
         .ministry-card {
             /* Using ACCENT for top border to give visual flair against the primary text/link */
-            border-top: 5px solid var(--color-accent); 
+            border-top: 5px solid var(--color-accent); 
         }
     </style>
 </head>
@@ -61,7 +61,7 @@
                     <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
                         <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
                         <a href="devotionals.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Devotionals</a>
-                        <a href="ministries.html" class="block px-4 py-2 text-sm primary-text font-bold bg-gray-50 transition duration-100">Ministries</a> 
+                        <a href="ministries.html" class="block px-4 py-2 text-sm primary-text font-bold bg-gray-50 transition duration-100">Ministries</a> 
                         <a href="resources.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
                         <a href="bible-reader.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Bible Reader</a>
                         <a href="prayer.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Prayer Request</a>
@@ -82,21 +82,24 @@
             </div>
         </div>
 
-        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004285]/90">
-            <a href="index.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Home</a>
-            <a href="announcements.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Announcements</a>
-            <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
-            <a href="media.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Media</a>
-            <a href="contact.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Contact</a>
+        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 font-semibold text-base **bg-white/95 text-gray-800 border-t border-gray-200**" style="**backdrop-filter: blur(8px);**">
             
-            <div class="pt-2 mt-2 border-t border-gray-600">
-                <p class="text-sm font-light text-gray-300 px-3 pt-1">Community & Resources</p>
-                <a href="about.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">About Us</a>
-                <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Devotionals</a>
-                <a href="ministries.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">Ministries</a>
-                <a href="resources.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Beliefs/Resources</a>
-                <a href="bible-reader.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Bible Reader</a>
-                <a href="prayer.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Prayer Request</a>
+            <div class="space-y-1 pt-2">
+                <a href="index.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Home</a>
+                <a href="announcements.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Announcements</a>
+                <a href="events.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Events</a>
+                <a href="media.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Media</a>
+                <a href="contact.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Contact</a>
+            </div>
+            
+            <div class="pt-4 mt-4 border-t border-gray-200 space-y-1">
+                <p class="text-xs font-bold primary-text px-3 mb-1 uppercase tracking-wider">Community & Resources</p>
+                <a href="about.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">About Us</a>
+                <a href="devotionals.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Devotionals</a>
+                <a href="ministries.html" class="block py-2 px-3 **primary-bg text-white** rounded-lg font-bold transition duration-100">Ministries</a>
+                <a href="resources.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Beliefs/Resources</a>
+                <a href="bible-reader.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Bible Reader</a>
+                <a href="prayer.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Prayer Request</a>
             </div>
         </nav>
     </header>

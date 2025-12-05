@@ -95,7 +95,7 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-orange-700 transition duration-150 shadow-md flex items-center">
+                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold transition duration-150 shadow-md flex items-center hover:opacity-90">
                     <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
                 </a>
                 <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
@@ -106,28 +106,31 @@
                 </button>
             </div>
         </div>
-        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004d40]/90">
-            <a href="index.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Home</a>
-            <a href="announcements.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Announcements</a>
-            <a href="events.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Events</a>
-            <a href="media.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Media</a>
-            <a href="contact.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Contact</a>
-            
-            <div class="pt-2 mt-2 border-t border-gray-600">
-                <p class="text-sm font-light text-gray-300 px-3 pt-1">Study & Community</p>
-                <a href="bible-reader.html" class="block py-2 px-3 primary-bg rounded-lg text-white font-bold transition duration-100">Bible Reader (Active)</a>
-                <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Study Hub/Devotionals</a>
-                <a href="prayer.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Prayer Request</a>
-                <a href="about.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">About Us</a>
-                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Ministries</a>
-                <a href="resources.html" class="block py-2 px-3 hover:bg-[#003d33] rounded-lg transition duration-100">Beliefs/Resources</a>
+        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 font-semibold text-base bg-white/95 text-gray-800 border-t border-gray-200" style="backdrop-filter: blur(8px);">
+            <div class="space-y-1 pt-2">
+                <a href="index.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Home</a>
+                <a href="announcements.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Announcements</a>
+                <a href="events.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Events</a>
+                <a href="media.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Media</a>
+                <a href="contact.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Contact</a>
             </div>
-            <div class="pt-2 mt-2 border-t border-gray-600">
-                <a href="giving.html" class="block py-2 px-3 accent-bg rounded-lg text-white font-bold transition duration-100 flex items-center justify-center mb-2 hover:bg-orange-700">
-                     <i data-lucide="hand-coins" class="w-4 h-4 mr-2"></i> Give Now
+            
+            <div class="pt-4 mt-4 border-t border-gray-200 space-y-1">
+                <p class="text-xs font-bold primary-text px-3 mb-1 uppercase tracking-wider">Study & Community</p>
+                <a href="bible-reader.html" class="block py-2 px-3 primary-bg rounded-lg text-white font-bold transition duration-100">Bible Reader (Active)</a>
+                <a href="devotionals.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Study Hub/Devotionals</a>
+                <a href="prayer.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Prayer Request</a>
+                <a href="about.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">About Us</a>
+                <a href="ministries.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Ministries</a>
+                <a href="resources.html" class="block py-2 px-3 hover:bg-gray-100 rounded-lg transition duration-100 primary-text">Beliefs/Resources</a>
+            </div>
+
+            <div class="pt-4 mt-4 border-t border-gray-200">
+                <a href="giving.html" class="block py-2 px-3 accent-bg rounded-lg text-white font-bold transition duration-100 flex items-center justify-center hover:opacity-90 mb-2">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-2"></i> Give Now
                 </a>
-                <a href="login.html" class="block py-2 px-3 bg-white text-gray-800 rounded-lg font-bold transition duration-100 flex items-center justify-center hover:bg-gray-100">
-                     <i data-lucide="log-in" class="w-4 h-4 mr-2"></i> Login
+                <a href="login.html" class="block py-2 px-3 bg-white text-gray-800 rounded-lg font-bold transition duration-100 flex items-center justify-center hover:bg-gray-100 border border-gray-300">
+                    <i data-lucide="log-in" class="w-4 h-4 mr-2"></i> Login
                 </a>
             </div>
         </nav>
@@ -190,7 +193,7 @@
                 <input type="text" placeholder="Search Bible Text..." class="w-full p-2 border border-gray-300 rounded-lg mb-4 text-sm form-input">
                 
                 <div class="text-center">
-                    <button class="w-full primary-bg text-white py-2 rounded-lg font-semibold hover:bg-[#00796b] transition">
+                    <button class="w-full primary-bg text-white py-2 rounded-lg font-semibold hover:bg-[#003d33] transition">
                         <i data-lucide="search" class="w-4 h-4 inline mr-1"></i> Search
                     </button>
                 </div>

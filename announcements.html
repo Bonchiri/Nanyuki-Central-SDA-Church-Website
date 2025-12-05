@@ -1,283 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Announcements - Nanyuki Central SDA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        :root {
-            --color-primary: #004d99; /* Deep SDA Blue */
-            --color-accent: #e53935;  /* Maroon/Red Accent */
-            --color-bg: #f5f7f9;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--color-bg);
-            color: #1e293b;
-            margin: 0; 
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements - Nanyuki Central SDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /*             Updated colors to match the project's main palette: 
+            Deep Teal (#004d40) and Deep Orange (#ff6f00)
+        */
+        :root {
+            --color-primary: #004d40; /* Deep Teal/Dark Green */
+            --color-accent: #ff6f00; /* Deep Orange/Gold */
+            --color-bg: #f5f7f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: #1e293b;
+            margin: 0; 
+        }
 
-        .primary-bg { background-color: var(--color-primary); }
-        .primary-text { color: var(--color-primary); }
-        .accent-bg { background-color: var(--color-accent); }
-        .accent-text { color: var(--color-accent); }
+        .primary-bg { background-color: var(--color-primary); }
+        .primary-text { color: var(--color-primary); }
+        .accent-bg { background-color: var(--color-accent); }
+        .accent-text { color: var(--color-accent); }
 
-        .announcement-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
-            /* Updated border-left to use primary variable */
-            border-left: 5px solid var(--color-primary); 
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-align: left; /* Ensure text starts on the left */
-        }
-        .announcement-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-            transform: translateY(-2px);
-        }
-        /* Custom colors for announcement borders if needed */
-        .border-l-red-500 { border-left-color: #ef4444 !important; }
-        .border-l-blue-500 { border-left-color: #3b82f6 !important; }
-        .border-l-green-500 { border-left-color: #10b981 !important; }
-        .border-l-gray-400 { border-left-color: #9ca3af !important; }
-    </style>
+        .announcement-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid var(--color-primary); 
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: left;
+        }
+        .announcement-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+        /* Custom colors for announcement borders if needed */
+        .border-l-red-500 { border-left-color: #ef4444 !important; }
+        .border-l-blue-500 { border-left-color: #3b82f6 !important; }
+        .border-l-green-500 { border-left-color: #10b981 !important; }
+
+        /* Mobile Dropdown Styling (Copied from previous step) */
+        .mobile-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 5%;
+            width: 200px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 990;
+            padding: 5px 0;
+        }
+
+        .mobile-dropdown a {
+            display: block;
+            color: #263238; /* Dark Text */
+            padding: 10px 15px;
+            font-size: 1em;
+            font-weight: 500;
+            transition: background-color 0.1s;
+        }
+
+        .mobile-dropdown a:hover {
+            background-color: #f5f5f5; /* Light Gray Background */
+            color: var(--color-primary);
+        }
+    </style>
 </head>
 <body>
-    <header class="primary-bg shadow-xl text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i data-lucide="church" class="w-6 h-6"></i>
-                <span class="text-xl font-bold">Nanyuki Central SDA</span>
-            </div>
-            
-            <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
-                <a href="index.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Home</a>
-                <a href="announcements.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 border-b-2 border-white">Announcements</a>
-                <a href="events.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Events</a>
-                <a href="media.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Media</a>
-                <a href="contact.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Contact</a>
+        <header class="primary-bg shadow-xl text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="church" class="w-6 h-6"></i>
+                <span class="text-xl font-bold">Nanyuki Central SDA</span>
+            </div>
+            
+                        <nav class="hidden lg:flex space-x-6 font-semibold text-sm">
+                <a href="devotionals.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Study Hub</a>
+                <a href="bible-reader.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Bible Reader</a>
+                <a href="prayer.html" class="hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150">Prayer</a>
 
-                <span class="text-gray-400">|</span>
+                <span class="text-gray-400">|</span>
 
-                <div class="relative group">
-                    <button id="community-dropdown-btn" class="flex items-center hover:border-b-2 hover:border-gray-200 pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
-                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
-                    </button>
+                <div class="relative group">
+                    <button id="community-dropdown-btn" class="flex items-center border-b-2 border-white pb-1 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="community-dropdown-menu">
+                        Community <i data-lucide="chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200"></i>
+                    </button>
 
-                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
-                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
-                        <a href="devotionals.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Devotionals</a>
-                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
-                        <a href="resources.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Beliefs/Resources</a>
-                    </div>
-                </div>
-            </nav>
+                    <div id="community-dropdown-menu" class="absolute left-0 mt-3 w-48 bg-white text-gray-800 rounded-lg shadow-xl z-50 py-1 hidden" role="menu" aria-orientation="vertical" aria-labelledby="community-dropdown-btn">
+                        <a href="announcements.html" class="block px-4 py-2 text-sm primary-text font-bold bg-gray-50 transition duration-100">Announcements</a>
+                        <a href="events.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Events</a>
+                        <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">About Us</a>
+                        <a href="ministries.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Ministries</a>
+                        <a href="media.html" class="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-100">Media/Sermons</a>
+                    </div>
+                </div>
+            </nav>
 
-            <div class="flex items-center space-x-3">
-                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-red-700 transition duration-150 shadow-md flex items-center">
-                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
-                </a>
-                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
-                    Login
-                </a>
-                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-        </div>
+            <div class="flex items-center space-x-3">
+                                <a href="giving.html" class="accent-bg text-white px-4 py-1.5 rounded-full font-bold hover:bg-[#e65100] transition duration-150 shadow-md flex items-center">
+                    <i data-lucide="hand-coins" class="w-4 h-4 mr-1"></i> Give
+                </a>
+                <a href="login.html" class="bg-white primary-text px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition duration-150 shadow-md">
+                    Login
+                </a>
+                                <button id="mobile-menu-btn" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition mobile-toggle">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
 
-        <nav id="mobile-menu" class="lg:hidden hidden px-4 pb-4 space-y-2 font-semibold text-base bg-[#004285]/90">
-            <a href="index.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Home</a>
-            <a href="announcements.html" class="block py-2 px-3 bg-[#004d99] rounded-lg text-white font-bold transition duration-100">Announcements</a>
-            <a href="events.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Events</a>
-            <a href="media.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Media</a>
-            <a href="contact.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Contact</a>
-            
-            <div class="pt-2 mt-2 border-t border-gray-600">
-                <p class="text-sm font-light text-gray-300 px-3 pt-1">Resources</p>
-                <a href="about.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">About Us</a>
-                <a href="devotionals.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Devotionals</a>
-                <a href="ministries.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Ministries</a>
-                <a href="resources.html" class="block py-2 px-3 hover:bg-[#004d99] rounded-lg transition duration-100">Beliefs/Resources</a>
-            </div>
-        </nav>
-    </header>
+                <div id="mobile-dropdown" class="mobile-dropdown lg:hidden hidden">
+            <a href="devotionals.html">Study Hub</a>
+            <a href="bible-reader.html">Bible Reader</a>
+            <a href="prayer.html">Prayer</a>
+            
+            <div class="py-2 my-2 border-t border-gray-200">
+                <p class="text-xs font-light text-gray-400 px-3 pt-1">Community</p>
+                <a href="announcements.html" class="primary-text font-bold bg-gray-50">Announcements</a>
+                <a href="events.html">Events</a>
+                <a href="about.html">About Us</a>
+                <a href="ministries.html">Ministries</a>
+                <a href="media.html">Media/Sermons</a>
+            </div>
 
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
-                <i data-lucide="megaphone" class="w-8 h-8 mr-3 accent-text"></i>
-                Church Announcements
-            </h1>
-            <p class="text-gray-600 text-lg">Stay updated with the latest news, meetings, and important happenings at Nanyuki Central SDA.</p>
-        </div>
-        
-        <div id="announcement-list-container" class="space-y-6">
-            <p class="text-center text-lg text-gray-500 py-10">Loading all church announcements...</p>
-        </div>
-    </main>
+            <div class="pt-2 mt-2 border-t border-gray-200">
+                <a href="giving.html" class="accent-text">Give</a>
+                <a href="login.html" class="accent-text">Login</a>
+            </div>
+        </div>
+            </header>
 
-    <footer class="bg-gray-800 text-white mt-12 p-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
-                <p class="text-sm text-gray-400">Integrated Study Tools & Community.</p>
-                <p class="text-xs text-gray-500 mt-2">P.O. Box: 474-10400, Nanyuki—Kenya</p>
-                <p class="text-xs text-gray-500">Email: nanyukicentralsda@gmail.com</p>
-            </div>
-            <div class="text-sm text-gray-400 space-x-4">
-                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
-                <span class="text-gray-500">|</span>
-                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
-                <span class="text-gray-500">|</span>
-                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
-              &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
-        </div>
-    </footer>
-    
-    <script>
-        // =========================================================
-        // V4 API CONFIGURATION
-        // =========================================================
-        
-        // ✅ API Key inserted here
-        const API_KEY = 'AIzaSyBRM0zxx-pH4lpFcZRfBvVOq9NbpozH3uk'; 
-        
-        // Your confirmed Sheet ID
-        const SHEET_ID = '1oY_cs8JkXfKssTXqGo-RrKEO5EGpnas44fl91Gx5HCY';
-        
-        // Targetting the 'Announcements' tab and columns A-D (assuming A2:D is the start of data)
-        const RANGE = 'Announcements!A2:D'; 
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold primary-text mb-3 flex items-center justify-center">
+                <i data-lucide="megaphone" class="w-8 h-8 mr-3 accent-text"></i>
+                Church Announcements
+            </h1>
+            <p class="text-gray-600 text-lg">Stay updated with the latest news, meetings, and important happenings at Nanyuki Central SDA.</p>
+        </div>
+        
+        <div id="announcement-list-container" class="space-y-6">
+            <p class="text-center text-lg text-gray-500 py-10">Loading all church announcements...</p>
+        </div>
+    </main>
 
-        const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+    <footer class="bg-gray-800 text-white mt-12 p-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold accent-text mb-2">Nanyuki Central SDA</h3>
+                <p class="text-sm text-gray-400">Integrated Study Tools & Community.</p>
+                <p class="text-xs text-gray-500 mt-2">P.O. Box: 474-10400, Nanyuki—Kenya</p>
+                <p class="text-xs text-gray-500">Email: nanyukicentralsda@gmail.com</p>
+            </div>
+            <div class="text-sm text-gray-400 space-x-4">
+                <a href="resources.html" class="text-gray-400 hover:text-white transition">Resources Hub</a>
+                <span class="text-gray-500">|</span>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                <span class="text-gray-500">|</span>
+                <a href="login.html" class="text-gray-400 hover:text-white transition">Admin Login</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center border-t border-gray-700 mt-4 pt-4">
+              &copy; 2025 Nanyuki Central SDA Church. All Rights Reserved.
+        </div>
+    </footer>
+    
+    <script>
+        // =========================================================
+        // V4 API CONFIGURATION
+        // =========================================================
+        
+        // Configuration provided by the user
+        const API_KEY = 'AIzaSyBRM0zxx-pH4lpFcZRfBvVOq9NbpozH3uk'; 
+        const SHEET_ID = '1oY_cs8JkXfKssTXqGo-RrKEO5EGpnas44fl91Gx5HCY';
+        const RANGE = 'Announcements!A2:D'; 
+        const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+        
+        const maxRetries = 5;
+
+        // =========================================================
+        // 1. HELPER: FETCH WITH EXPONENTIAL BACKOFF
+        // =========================================================
+        
+        /**
+         * Fetches data from the given URL with exponential backoff retry logic.
+         */
+        async function fetchWithRetry(url, options = {}, retries = 0) {
+            try {
+                const response = await fetch(url, options);
+                
+                // Check for server-side errors (5xx) or rate limit (429)
+                if (response.status === 429 || !response.ok) { 
+                    if (retries < maxRetries) {
+                        // Calculate exponential delay with jitter
+                        const delay = Math.pow(2, retries) * 1000 + Math.floor(Math.random() * 1000); 
+                        console.log(`[API Retry] Retrying in ${delay / 1000}s... (Attempt ${retries + 1})`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return fetchWithRetry(url, options, retries + 1);
+                    }
+                    // If all retries fail, throw the final response error
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.error.message || `API call failed after ${maxRetries} retries with status: ${response.status}`);
+                    });
+                }
+                return response;
+            } catch (error) {
+                // Handle network errors (e.g., disconnection)
+                if (retries < maxRetries) {
+                    const delay = Math.pow(2, retries) * 1000 + Math.floor(Math.random() * 1000);
+                    console.log(`[Network Retry] Retrying in ${delay / 1000}s... (Attempt ${retries + 1})`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithRetry(url, options, retries + 1);
+                }
+                throw new Error(`Failed to fetch data after ${maxRetries} retries: ${error.message}`);
+            }
+        }
 
 
-        // =========================================================
-        // 1. DYNAMIC ANNOUNCEMENT LOADER (using API V4)
-        // =========================================================
+        // =========================================================
+        // 2. DYNAMIC ANNOUNCEMENT LOADER (using API V4)
+        // =========================================================
 
-        function loadAllAnnouncementsV4() {
-            
-            const container = document.getElementById('announcement-list-container');
-            const categoryMap = {
-                'Red': 'border-l-red-500',
-                'Blue': 'border-l-blue-500',
-                'Green': 'border-l-green-500',
-                'Default': 'border-l-gray-400' 
-            };
+        async function loadAllAnnouncementsV4() {
+            
+            const container = document.getElementById('announcement-list-container');
+            
+            // Map the UPPERCASE category string from the sheet to a specific Tailwind border class.
+            const categoryMap = {
+                'RED': 'border-l-red-500',
+                'BLUE': 'border-l-blue-500',
+                'GREEN': 'border-l-green-500',
+            };
 
-            container.innerHTML = '<p class="text-center text-lg text-gray-500 py-10">Loading all announcements using Google Sheets API V4...</p>';
+            container.innerHTML = '<p class="text-center text-lg text-gray-500 py-10">Loading all announcements using Google Sheets API V4...</p>';
 
-            fetch(API_URL)
-                .then(response => {
-                    if (!response.ok) {
-                        // Handles API errors (e.g., wrong key, permissions)
-                        return response.json().then(errorData => {
-                            console.error('API Error Response:', errorData);
-                            throw new Error(errorData.error.message || 'Network response was not ok');
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const entries = data.values; // V4 returns data in 'values' array
-                    container.innerHTML = ''; // Clear the loading message
+            try {
+                const response = await fetchWithRetry(API_URL);
+                const data = await response.json(); 
+                
+                const entries = data.values; // V4 returns data in 'values' array
+                container.innerHTML = ''; // Clear the loading message
 
-                    if (!entries || entries.length === 0) {
-                        container.innerHTML = '<p class="text-center text-gray-500 py-10">No announcements posted.</p>';
-                        return;
-                    }
+                if (!entries || entries.length === 0) {
+                    container.innerHTML = '<p class="text-center text-gray-500 py-10">No announcements posted.</p>';
+                    return;
+                }
 
-                    // Process ALL entries (no slicing here, unlike the homepage)
-                    entries.forEach(row => {
-                        // Data is mapped by column index: [0]=Title, [1]=Date, [2]=Details, [3]=Category
-                        const title = row[0] || 'No Title';
-                        const date = row[1] || 'N/A';
-                        const details = row[2] || '';
-                        const category = row[3] || 'Default';
-                        
-                        // Gets the correct border color class
-                        const categoryClass = categoryMap[category] || categoryMap['Default'];
-                        
-                        const cardHTML = `
-                            <div class="announcement-card ${categoryClass}">
-                                <div class="flex justify-between items-start">
-                                    <h2 class="text-2xl font-bold primary-text mb-1">${title}</h2>
-                                    ${category === 'Red' ? '<span class="text-xs font-semibold text-white px-3 py-1 rounded-full **bg-red-500**">URGENT</span>' : ''}
-                                </div>
-                                <p class="text-gray-500 text-sm mb-3">Posted: ${date}</p>
-                                <p class="text-gray-700">${details}</p>
-                            </div>
-                        `;
-                        container.insertAdjacentHTML('beforeend', cardHTML);
-                    });
-                })
-                .catch(error => {
-                    console.error('Fatal Fetch Error:', error);
-                    container.innerHTML = `<p class="text-center text-red-600 font-semibold py-10">
-                        Data Load Error: Please check the API Key, Sheet Sharing, and the 'Announcements' tab name.
-                    </p>`;
-                });
-        }
-        
-        // =========================================================
-        // CORE NAVIGATION & INITIALIZATION LOGIC
-        // =========================================================
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // ✅ Initialize Dynamic Announcements using the V4 function
-            loadAllAnnouncementsV4(); 
+                // Process ALL entries 
+                entries.forEach(row => {
+                    // Data is mapped by column index: [0]=Title, [1]=Date, [2]=Details, [3]=Category
+                    const title = row[0] || 'No Title';
+                    const date = row[1] || 'N/A';
+                    const details = row[2] || '';
+                    
+                    // CRUCIAL CHANGE: Normalize category string by trimming whitespace and converting to UPPERCASE
+                    const categoryRaw = (row[3] || '').trim().toUpperCase();
+                    const category = categoryRaw;
+                    
+                    // Gets the correct border color class (will be empty string if category is not matched, allowing the default primary-blue border to apply)
+                    const categoryClass = categoryMap[category] || '';
+                    
+                    const cardHTML = `
+                        <div class="announcement-card ${categoryClass}">
+                            <div class="flex justify-between items-start">
+                                <h2 class="text-2xl font-bold primary-text mb-1">${title}</h2>
+                                                                ${category === 'RED' ? '<span class="text-xs font-semibold text-white px-3 py-1 rounded-full bg-red-500">URGENT</span>' : ''}
+                            </div>
+                            <p class="text-gray-500 text-sm mb-3">Posted: ${date}</p>
+                            <p class="text-gray-700 whitespace-pre-wrap">${details}</p>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', cardHTML);
+                });
+            } catch (error) {
+                console.error('Fatal Data Load Error:', error);
+                container.innerHTML = `<div class="p-6 bg-red-50 rounded-lg border border-red-200 text-center">
+                    <p class="text-red-700 font-semibold mb-2">Data Load Error</p>
+                    <p class="text-red-600 text-sm">Could not fetch announcements. Please verify your Google Sheets API key, ensure the sheet is published/shared, and check the console for details: ${error.message}</p>
+                </div>`;
+            }
+        }
+        
+        // =========================================================
+        // CORE NAVIGATION & INITIALIZATION LOGIC (UPDATED)
+        // =========================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Initialize Dynamic Announcements using the V4 function
+            loadAllAnnouncementsV4(); 
 
-            // Navigation Logic (Dropdown and Mobile Menu)
-            const dropdownBtn = document.getElementById('community-dropdown-btn');
-            const dropdownMenu = document.getElementById('community-dropdown-menu');
-            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
-            
-            // Mobile Menu Logic
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
+            // Desktop Dropdown Logic
+            const dropdownBtn = document.getElementById('community-dropdown-btn');
+            const dropdownMenu = document.getElementById('community-dropdown-menu');
+            const dropdownIcon = dropdownBtn ? dropdownBtn.querySelector('i[data-lucide="chevron-down"]') : null;
 
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    // Toggles the 'hidden' class to show/hide the mobile menu
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
+            // Mobile Menu Logic (Updated to use the dropdown)
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileDropdown = document.getElementById('mobile-dropdown');
 
-            if (dropdownBtn && dropdownMenu) {
-                dropdownBtn.addEventListener('click', () => {
-                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
-                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
-                    dropdownMenu.classList.toggle('hidden');
+            if (mobileMenuBtn && mobileDropdown) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    // Toggles the 'hidden' class to show/hide the mobile dropdown
+                    mobileDropdown.classList.toggle('hidden');
+                });
+                
+                // Close mobile dropdown when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenuBtn.contains(event.target) && !mobileDropdown.contains(event.target) && !mobileDropdown.classList.contains('hidden')) {
+                        mobileDropdown.classList.add('hidden');
+                    }
+                });
+            }
 
-                    if (dropdownIcon) {
-                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
-                    }
-                });
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', () => {
+                    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+                    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.classList.toggle('hidden');
 
-                document.addEventListener('click', (event) => {
-                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                        dropdownBtn.setAttribute('aria-expanded', 'false');
-                        dropdownMenu.classList.add('hidden');
-                        if (dropdownIcon) {
-                            dropdownIcon.classList.remove('rotate-180');
-                        }
-                    }
-                });
-            }
+                    if (dropdownIcon) {
+                        dropdownIcon.classList.toggle('rotate-180', !isExpanded);
+                    }
+                });
 
-            // Initialize Lucide icons after the DOM is ready
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        });
-    </script>
+                document.addEventListener('click', (event) => {
+                    if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        dropdownBtn.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.classList.add('hidden');
+                        if (dropdownIcon) {
+                            dropdownIcon.classList.remove('rotate-180');
+                        }
+                    }
+                });
+            }
+
+            // Initialize Lucide icons after the DOM is ready
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
 </body>
 </html>
